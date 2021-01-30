@@ -11,6 +11,7 @@ import { EventsComponent } from './events/events.component';
 import { GamesComponent } from './games/games.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     EventsComponent,
     GamesComponent,
     SettingsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
