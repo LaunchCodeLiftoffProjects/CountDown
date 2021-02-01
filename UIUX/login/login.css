@@ -1,0 +1,19 @@
+/* CSS FOR LOGIN FORM ELEMENT  */
+body{
+    padding-top:5.2rem;
+}
+    
+.login{
+    padding: 2rem;
+    border: 1px solid gray;
+    border-radius: 1.1rem;
+ 
+}
+
+.or {
+    margin-top: 1rem;
+}
+
+a{
+    text-decoration:none !important;
+}
