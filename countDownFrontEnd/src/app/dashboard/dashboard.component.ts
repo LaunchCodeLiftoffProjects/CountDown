@@ -8,23 +8,24 @@ import { ApiService } from '../api.service';
 })
 export class DashboardComponent implements OnInit {
   movies; //array of movie objects
-  title; //title of that movie
-  theMovie // single movie object
+  //baseIMGUrl = "https://image.tmdb.org/t/p/w500"; base URL for where the API stores the images, used in HTML file
+  //variables used in for loop
+  /*releaseDate;
+  themovie;*/
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.apiService.get_movies().subscribe((data)=>{
       this.movies = data['results'];
+      //for loop used to visualize data on the console
+      /*
       for(const movie in this.movies){
-        this.theMovie = this.movies[movie];
-        this.title = this.theMovie["original_title"];
-        console.log(this.title);
-
+        this.themovie = this.movies[movie];
+        this.releaseDate = this.themovie['release_date'];
+        console.log(typeof this.releaseDate);
       }
-      
-
+      */
     });
   }
-
 }
