@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\Countdown ASP.NET\\Countdown ASP.NET\\Countdown ASP.NET.csproj": {}
+    "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\countDownBackEnd\\Countdown ASP.NET\\Countdown ASP.NET.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\Countdown ASP.NET\\Countdown ASP.NET\\Countdown ASP.NET.csproj": {
+    "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\countDownBackEnd\\Countdown ASP.NET\\Countdown ASP.NET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\Countdown ASP.NET\\Countdown ASP.NET\\Countdown ASP.NET.csproj",
+        "projectUniqueName": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\countDownBackEnd\\Countdown ASP.NET\\Countdown ASP.NET.csproj",
         "projectName": "Countdown ASP.NET",
-        "projectPath": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\Countdown ASP.NET\\Countdown ASP.NET\\Countdown ASP.NET.csproj",
+        "projectPath": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\countDownBackEnd\\Countdown ASP.NET\\Countdown ASP.NET.csproj",
         "packagesPath": "C:\\Users\\elber\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\Countdown ASP.NET\\Countdown ASP.NET\\obj\\",
+        "outputPath": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\countDownBackEnd\\Countdown ASP.NET\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\elber\\AppData\\Roaming\\NuGet\\NuGet.Config",

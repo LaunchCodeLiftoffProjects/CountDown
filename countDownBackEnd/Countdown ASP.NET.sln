@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Countdown_ASP.NET", "Countdown ASP.NET\Countdown_ASP.NET.csproj", "{E32E41DF-AF9B-4FD3-9885-0399B5C18C5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{06B39F7B-262E-4E87-8BDB-BCF77EA50BE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E32E41DF-AF9B-4FD3-9885-0399B5C18C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E32E41DF-AF9B-4FD3-9885-0399B5C18C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E32E41DF-AF9B-4FD3-9885-0399B5C18C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E32E41DF-AF9B-4FD3-9885-0399B5C18C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCDD4CA8-3E43-4D80-921E-6425C1EA62D0}
+	EndGlobalSection
+EndGlobal
