@@ -1,0 +1,109 @@
+/* ############## CLOCK STYLING AND POSITIONING ################*/
+/* ############## CLOCK STYLING AND POSITIONING ################*/
+/* ############## CLOCK STYLING AND POSITIONING ################*/
+
+.count {
+    margin: 5px 0;
+}
+
+.countd {
+    /*  MAKES CLOCK ELEMENTS FLOAT HORIZONTALLY  */
+    display: inline-block;
+
+    /* SETS THE SIZE OF THE DIV ELEMENTS THAT CONTAIN THE INDIVIDUAL CLOCK ELEMENTS */
+    width: 50px;
+    height: 50px;
+    color: #fff;
+
+    /* ELEMENT SPACING AND TEXT FORMATTING */
+    margin: 4px 4px;
+    text-align: center;
+    font-size: .6rem;
+    text-transform: uppercase;
+}
+
+.countd span {
+    /* DROPS THE DAYS, HOURS, MIN, SEC BELOW THE NUMBERS 00  */
+    display: block;
+    /* NUMBER FONT SIZE */
+    font-size: .75rem;
+}
+
+/* ###################### CARD STYLING #################### */
+/* ###################### CARD STYLING #################### */
+/* ###################### CARD STYLING #################### */
+
+.card {
+    margin: 1rem;
+    border-radius: 20px;
+    width: 18rem;
+    background-color: blue;
+}
+
+.card-body {
+    height: 70px;
+    padding-bottom: 0px;
+}
+
+/* #################### CARD BUTTON AND BUTTON DIV STYLING ################### */
+/* #################### CARD BUTTON AND BUTTON DIV STYLING ################### */
+/* #################### CARD BUTTON AND BUTTON DIV STYLING ################### */
+
+/* RESPONSIVE PAGE BEHAVIOR FOR THE CARDS  */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* TOP OF THE CARD SIZING AND PADDING */
+#card-header {
+    height: 30px;
+    padding-top: 0px;
+}
+
+/* CARD BUTTON DIV */
+.card-buttons {
+    text-align: center;
+}
+
+/* INFORMATION BUTTON ICON "I" CIRCLE */
+.info-icon {
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+/* INFORMATION BUTTON ICON ELLIPSIS ". . ." */
+.ellipsis-icon {
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 0px;
+    padding-bottom: 25px;
+}
+
+/* SHARE BUTTON ICON "ARROW" */
+.share-icon {
+    color: yellow;
+    font-size: 20px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+/* ADD BUTTON ICON "+" */
+.add-icon {
+    color: green;
+    font-size: 20px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+/* FILM ROLL ICON  */
+.film-icon {
+    height: 40px;
+    margin-right: 10px;
+}
