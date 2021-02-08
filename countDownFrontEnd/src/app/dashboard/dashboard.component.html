@@ -9,10 +9,11 @@
         <div id="card-header" class="card-header ml-auto">
             <!-- CLOCK -->
             <div class="count">
-                <div class="countd"><span id="day">00</span>Days</div>
-                <div class="countd"><span id="hour">00</span>Hours</div>
-                <div class="countd"><span id="minute">00</span>Minutes</div>
-                <div class="countd"><span id="second">00</span>Seconds</div>
+                <div class="countd"><span id="day">{{daysUntilRelease(movie.release_date)}}</span>Days</div>
+                <!-- <div class="countd"><span id="day">00</span>Days</div> -->
+                <div class="countd"><span id="hour">{{hoursUntilRelease(movie.release_date)}}</span>Hours</div>
+                <div class="countd"><span id="minute">{{minsUntilRelease(movie.release_date)}}</span>Minutes</div>
+                <div class="countd"><span id="second">{{secUntilRelease(movie.release_date)}}</span>Seconds</div>
             </div>
         </div>
         <!-- CARD IMAGE SOMETHING WEIRD HAPPENS HERE  -->
@@ -33,6 +34,15 @@
     </div>
 
 <!--Probably could make this script code into a getCountdown function inside an load event-->
+ <!-- turn api string into array -->
+ <!-- place numbers in its own array or into its own integer -->
+ <!-- parseInt the string at the same time? -->
+ <!-- parse the integer into year, month, day (per the api's json) -->
+ <!-- assign (template?) values to the year, month and day -->
+ <!-- OR create new object composed of key:value pairs to reference -->
+ <!-- replace "count" string with template(?) values -->
+
+
  <script>
      let count = new Date("Nov 21, 2021 00:00:00").getTime();
     let anothercount = new Date("June 5, 2021 00:00:00").getTime();
@@ -55,4 +65,13 @@
         }
     }, 1000)
  </script>
+
+<script> 
+// in .ts component -- create function that iterates through movies.release_date 
+let now = new Date().getTime();
+let d = count - now;
+
+</script>
+
+
  
