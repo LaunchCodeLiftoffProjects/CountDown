@@ -34,7 +34,6 @@ export class DashboardComponent implements OnInit {
 
    dateToIsoFormat(releaseDate: string) : Date {
     // how to change string date to ISO format - https://stackoverflow.com/questions/35959853/convert-string-to-isodate
-    
     let originalDate = moment(releaseDate, "YYYY-MM-DD");
     let isoDate = originalDate.format()
     let dt1 : Date = new Date (isoDate);
@@ -42,7 +41,6 @@ export class DashboardComponent implements OnInit {
    }
 
   diffInTime (releaseDate: string) : number {
-
     let dt1 : Date = new Date(this.dateToIsoFormat(releaseDate)); // should be the greater date because the movies are expected to be coming out in the future
     let dt2 : Date = new Date();
     let diff_In_Time : number = dt1.getTime()-dt2.getTime(); // will be a negative number if the date has passed
@@ -50,41 +48,101 @@ export class DashboardComponent implements OnInit {
    }
 
   daysUntilRelease (releaseDate: string) : number {
-
     let diff_In_Time : number = this.diffInTime(releaseDate);
     let diff_In_Days : number = diff_In_Time / (1000 * 3600 * 24);
-    return Math.ceil(diff_In_Days);  // returns the number of full days -- use Math.ceil to round properly for both positive and negative results : https://www.oreilly.com/library/view/javascript-the-definitive/0596101996/re106.html
+    if (diff_In_Time >= 0) {
+      return Math.floor(diff_In_Days); // returns the number of full days -- use Math.floor to round "down" for positive results
+    } else {
+      return Math.ceil(diff_In_Days); // returns the number of full days -- use Math.ceil to round "up" for negative results : https://www.oreilly.com/library/view/javascript-the-definitive/0596101996/re106.html
+    }
+  }
+
+   daysInMilisec (releaseDate: string) : number {
+    let numOfFullDays : number = this.daysUntilRelease(releaseDate);
+    let daysInMiliseconds : number = numOfFullDays * 1000 * 3600 * 24;
+    return daysInMiliseconds;
    }
 
    hoursUntilRelease (releaseDate: string) : number {
     let timeInMiliseconds : number = this.diffInTime(releaseDate);
-    let numOfFullDays : number = this.daysUntilRelease(releaseDate);
-    let daysInMiliseconds : number = numOfFullDays * 1000 * 3600 * 24;
-    let diff_In_Hours : number = ((timeInMiliseconds - daysInMiliseconds)/ 1000) / (60*60);
-    return Math.ceil(diff_In_Hours);  
+    let daysInMiliseconds : number = this.daysInMilisec(releaseDate);
+    let milesecondsRemaining : number = timeInMiliseconds - daysInMiliseconds
+    let diff_In_Hours : number = (milesecondsRemaining/ 1000) / (60*60);
+    if (timeInMiliseconds >= 0) {
+      return Math.floor(diff_In_Hours);
+    } else {
+      return Math.ceil(diff_In_Hours);
+    }
+   }
+
+   hoursInMilisec (releaseDate: string) : number {
+    let numOfFullHours : number = this.hoursUntilRelease(releaseDate);
+    let hoursInMiliseconds : number = (numOfFullHours * 1000) * (60 * 60); 
+    return hoursInMiliseconds;
    }
 
    minsUntilRelease (releaseDate: string) : number {
     let timeInMiliseconds : number = this.diffInTime(releaseDate);
-    let numOfFullDays : number = this.daysUntilRelease(releaseDate);
-    let daysInMiliseconds : number = numOfFullDays * 1000 * 3600 * 24;
-    let numOfFullHours : number = this.hoursUntilRelease(releaseDate);
-    let hoursInMiliseconds : number = (numOfFullHours * 1000) * (60 * 60); 
-    let diff_In_Mins : number = ((timeInMiliseconds - daysInMiliseconds - hoursInMiliseconds)/ 1000) / 60;
-    return Math.floor(diff_In_Mins);  
+    let daysInMiliseconds : number = this.daysInMilisec(releaseDate);
+    let hoursInMiliseconds : number = this.hoursInMilisec(releaseDate); 
+    let diff_In_Mins : number = (((timeInMiliseconds - daysInMiliseconds) - hoursInMiliseconds)/ 1000) / 60;
+    if (timeInMiliseconds >= 0) {
+      return Math.floor(diff_In_Mins);
+    } else {
+      return Math.ceil(diff_In_Mins);
+    } 
+   }
+
+   minsInMilisec (releaseDate: string) : number {
+    let numOfFullMins : number = this.minsUntilRelease(releaseDate);
+    let minsInMiliseconds: number = ((numOfFullMins * 1000) * 60);
+    return minsInMiliseconds;
    }
 
    secUntilRelease (releaseDate: string) : number {
     let timeInMiliseconds : number = this.diffInTime(releaseDate);
-    let numOfFullDays : number = this.daysUntilRelease(releaseDate);
-    let daysInMiliseconds : number = numOfFullDays * 1000 * 3600 * 24;
-    let numOfFullHours : number = this.hoursUntilRelease(releaseDate);
-    let hoursInMiliseconds : number = (numOfFullHours * 1000) * (60 * 60); 
-    let numOfFullMins : number = this.minsUntilRelease(releaseDate);
-    let minsInMiliseconds: number = ((numOfFullMins * 1000) * 60);
+    let daysInMiliseconds : number = this.daysInMilisec(releaseDate);
+    let hoursInMiliseconds : number = this.hoursInMilisec(releaseDate);
+    let minsInMiliseconds : number = this.minsInMilisec(releaseDate);
     let diff_In_Sec : number = ((timeInMiliseconds - daysInMiliseconds - hoursInMiliseconds - minsInMiliseconds)/ 1000);
-    return Math.floor(diff_In_Sec);  
+    if (timeInMiliseconds >= 0) { // this "if" statement doesn't impact anything, at this point, but am doing this in case we ever want to display miliseconds
+      return Math.floor(diff_In_Sec); 
+    } else {
+      return Math.ceil(diff_In_Sec);
+    }  
    }
+   
+   // ------- ORIGINAL METHODS NON-DRY---------
+
+  //  hoursUntilRelease (releaseDate: string) : number {
+  //   let timeInMiliseconds : number = this.diffInTime(releaseDate);
+  //   let numOfFullDays : number = this.daysUntilRelease(releaseDate);
+  //   let daysInMiliseconds : number = numOfFullDays * 1000 * 3600 * 24;
+  //   let diff_In_Hours : number = ((timeInMiliseconds - daysInMiliseconds)/ 1000) / (60*60);
+  //   return Math.ceil(diff_In_Hours);  
+  //  }
+
+  //  minsUntilRelease (releaseDate: string) : number {
+  //   let timeInMiliseconds : number = this.diffInTime(releaseDate);
+  //   let numOfFullDays : number = this.daysUntilRelease(releaseDate);
+  //   let daysInMiliseconds : number = numOfFullDays * 1000 * 3600 * 24;
+  //   let numOfFullHours : number = this.hoursUntilRelease(releaseDate);
+  //   let hoursInMiliseconds : number = (numOfFullHours * 1000) * (60 * 60); 
+  //   let diff_In_Mins : number = ((timeInMiliseconds - daysInMiliseconds - hoursInMiliseconds)/ 1000) / 60;
+  //   return Math.floor(diff_In_Mins);  
+  //  }
+
+  //  secUntilRelease (releaseDate: string) : number {
+  //   let timeInMiliseconds : number = this.diffInTime(releaseDate);
+  //   let numOfFullDays : number = this.daysUntilRelease(releaseDate);
+  //   let daysInMiliseconds : number = numOfFullDays * 1000 * 3600 * 24;
+  //   let numOfFullHours : number = this.hoursUntilRelease(releaseDate);
+  //   let hoursInMiliseconds : number = (numOfFullHours * 1000) * (60 * 60); 
+  //   let numOfFullMins : number = this.minsUntilRelease(releaseDate);
+  //   let minsInMiliseconds: number = ((numOfFullMins * 1000) * 60);
+  //   let diff_In_Sec : number = ((timeInMiliseconds - daysInMiliseconds - hoursInMiliseconds - minsInMiliseconds)/ 1000);
+  //   return Math.floor(diff_In_Sec);  
+  //  }
 
    
 
