@@ -18,4 +18,9 @@
   </ItemGroup>
 
 
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Views\WeatherForecast\" />
+  </ItemGroup>
 </Project>

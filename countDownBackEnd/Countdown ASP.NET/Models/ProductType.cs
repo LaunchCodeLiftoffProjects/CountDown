@@ -13,4 +13,6 @@ namespace Countdown_ASP.NET.Models
 
         public List<Product> Products { get; set; }
     }
+
+
 }
