@@ -20,6 +20,8 @@ export class BooksComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    //partial subject list that might be used in a modified api function for the books found on the api.service.ts file. Perhaps get_books(subject) could be a function that's called here to iterate through the subjects below, and push resulting data for each query into a single book array.
+    // let arr = [ARCHITECTURE, ART, BIBLES, COMPUTERS, COOKING, CRAFTS & HOBBIES, DESIGN, DRAMA,EDUCATION, FICTION, FOREIGN, GARDENING, HISTORY, HUMOR, LAW, MATHEMATICS, MEDICAL, MUSIC, NATURE, PETS, PHILOSOPHY, PHOTOGRAPHY, POETRY, PSYCHOLOGY, REFERENCE, RELIGION, SCIENCE, TRANSPORTATION, TRAVEL]
     this.apiService.get_books().subscribe((data)=>{
       this.books = data['items'];
       //for loop used to visualize data on the console

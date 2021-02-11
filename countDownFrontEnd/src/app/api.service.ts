@@ -12,7 +12,11 @@ export class ApiService {
   }
 
   public get_books(){
+
     
-    return this.httpClient.get('https://www.googleapis.com/books/v1/volumes?q=upcoming+books&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0');
+    // return this.httpClient.get('https://www.googleapis.com/books/v1/volumes?q=the&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0');
+    // return this.httpClient.get('https://www.googleapis.com/books/v1/volumes?q=intitle:a&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0');
+    return this.httpClient.get('https://www.googleapis.com/books/v1/volumes?q=subject:humor&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0');
+    // return this.httpClient.get('https://www.googleapis.com/books/v1/volumes?q=upcoming+books&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0');
   }
 }
