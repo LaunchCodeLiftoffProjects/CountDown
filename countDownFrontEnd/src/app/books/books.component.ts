@@ -21,7 +21,18 @@ export class BooksComponent implements OnInit {
 
   ngOnInit(): void {
     //partial subject list that might be used in a modified api function for the books found on the api.service.ts file. Perhaps get_books(subject) could be a function that's called here to iterate through the subjects below, and push resulting data for each query into a single book array.
-    // let arr = [ARCHITECTURE, ART, BIBLES, COMPUTERS, COOKING, CRAFTS & HOBBIES, DESIGN, DRAMA,EDUCATION, FICTION, FOREIGN, GARDENING, HISTORY, HUMOR, LAW, MATHEMATICS, MEDICAL, MUSIC, NATURE, PETS, PHILOSOPHY, PHOTOGRAPHY, POETRY, PSYCHOLOGY, REFERENCE, RELIGION, SCIENCE, TRANSPORTATION, TRAVEL]
+    
+    //iterate through subjects to accumulate more book info
+    
+    //let apiArr = ['https://www.googleapis.com/books/v1/volumes?q=subject:','SUBJECT', '&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0']
+    //let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
+    //let apiStr = "";
+
+    //for (let s of subjArr) {
+        //apiArr[1] = n;
+        // apiStr = apiArr.join();
+        //}
+
     this.apiService.get_books().subscribe((data)=>{
       this.books = data['items'];
       //for loop used to visualize data on the console
