@@ -13,15 +13,15 @@ export class ApiService {
 
   public get_books(){
 
-    //iterate through subjects to accumulate more book info
-//let apiArr = ['https://www.googleapis.com/books/v1/volumes?q=subject:','SUBJECT', '&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0']
-//let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
-//let apiStr = "";
+//iterate through subjects to accumulate more book info
+    //let apiArr = ['https://www.googleapis.com/books/v1/volumes?q=subject:','SUBJECT', '&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0']
+    //let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
+    //let apiStr = "";
 
-// for (let s of subjArr) {
-  // apiArr[1] = n;
-  // apiStr = apiArr.join();
-//}
+    // for (let s of subjArr) {
+      // apiArr[1] = n;
+      // apiStr = apiArr.join();
+    //}
     
     // return this.httpClient.get('https://www.googleapis.com/books/v1/volumes?q=the&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0');
     // return this.httpClient.get('https://www.googleapis.com/books/v1/volumes?q=intitle:a&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0');
