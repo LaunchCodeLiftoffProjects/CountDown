@@ -8,6 +8,8 @@ import { MusicComponent } from '../music/music.component';
 import { EventsComponent } from '../events/events.component';
 import { GamesComponent } from '../games/games.component';
 import { SettingsComponent } from '../settings/settings.component';
+import { AuthComponent } from '../auth/auth.component';
+import { TosComponent } from '../tos/tos.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -43,6 +45,14 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent
+  },
+  {
+    path: 'authentication',
+    component: AuthComponent
+  },
+  {
+    path: 'tos',
+    component: TosComponent
   },
   {
     path: '**',

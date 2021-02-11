@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routing/routing.module';
@@ -10,9 +11,12 @@ import { MusicComponent } from './music/music.component';
 import { EventsComponent } from './events/events.component';
 import { GamesComponent } from './games/games.component';
 import { SettingsComponent } from './settings/settings.component';
+import { AuthComponent } from './auth/auth.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { TosComponent } from './tos/tos.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +27,16 @@ import { HttpClientModule } from '@angular/common/http';
     MusicComponent,
     EventsComponent,
     GamesComponent,
+    AuthComponent,
     SettingsComponent,
     PageNotFoundComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    LoadingSpinnerComponent,
+    TosComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RoutingModule,
     HttpClientModule
   ],
