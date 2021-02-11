@@ -10,7 +10,6 @@
             <!-- CLOCK -->
             <div class="count">
                 <div class="countd"><span id="day">{{daysUntilRelease(movie.release_date)}}</span>Days</div>
-                <!-- <div class="countd"><span id="day">00</span>Days</div> -->
                 <div class="countd"><span id="hour">{{hoursUntilRelease(movie.release_date)}}</span>Hours</div>
                 <div class="countd"><span id="minute">{{minsUntilRelease(movie.release_date)}}</span>Minutes</div>
                 <div class="countd"><span id="second">{{secUntilRelease(movie.release_date)}}</span>Seconds</div>
@@ -20,10 +19,12 @@
 ​         
         <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="...">
         <!-- CARD BODY STARTS  -->
-        <div class="card-body">
+        <!-- <div class="card-body"> -->
             <!-- CARD TEXT STARTS  -->
-            <h5 class="card-title"><span> <!--<img class="film-icon" src="/images/film.png" alt="">--></span>{{movie.title}}</h5>
-        </div>
+            <!-- <h5 class="card-title"><span>  -->
+                <!--<img class="film-icon" src="/images/film.png" alt="">-->
+                <!-- {{book.title}}</span></h5> -->
+        <!-- </div> -->
         <!-- CARD BUTTONS AT BOTTOM  -->
         <div class="card-buttons">
             <button type="button" class="btn share-icon"><i class="fa fa-share"></i></button>
@@ -34,13 +35,7 @@
     </div>
 
 <!--Probably could make this script code into a getCountdown function inside an load event-->
- <!-- turn api string into array -->
- <!-- place numbers in its own array or into its own integer -->
- <!-- parseInt the string at the same time? -->
- <!-- parse the integer into year, month, day (per the api's json) -->
- <!-- assign (template?) values to the year, month and day -->
- <!-- OR create new object composed of key:value pairs to reference -->
- <!-- replace "count" string with template(?) values -->
+
 
 
  <script>
@@ -66,12 +61,7 @@
     }, 1000)
  </script>
 
-<script> 
-// in .ts component -- create function that iterates through movies.release_date 
-let now = new Date().getTime();
-let d = count - now;
 
-</script>
 
 
  

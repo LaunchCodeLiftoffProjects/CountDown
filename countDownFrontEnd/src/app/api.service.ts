@@ -10,4 +10,9 @@ export class ApiService {
   public get_movies(){
     return this.httpClient.get('https://api.themoviedb.org/3/movie/upcoming?api_key=192a848438f44d753a42f1fb58899015&language=en-US&page=1');
   }
+
+  public get_books(){
+    
+    return this.httpClient.get('https://www.googleapis.com/books/v1/volumes?q=upcoming+books&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0');
+  }
 }
