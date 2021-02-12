@@ -16,7 +16,7 @@
             </div>
         </div>
         <!-- CARD IMAGE SOMETHING WEIRD HAPPENS HERE  -->
-​         
+​
         <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="...">
         <!-- CARD BODY STARTS  -->
         <!-- <div class="card-body"> -->
@@ -44,17 +44,17 @@
     let x = setInterval(function(){
         let now = new Date().getTime();
         let d = count - now;
-       
+
         let day = Math.floor(d/(1000 * 60 * 60 * 24));
         let hour = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         let minute = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
         let second = Math.floor((d % (1000 * 60)) / 1000);
-    
+
         document.getElementById('day').innerHTML = day;
         document.getElementById('hour').innerHTML = hour;
         document.getElementById('minute').innerHTML = minute;
         document.getElementById('second').innerHTML = second;
-    
+
         if(d <= 0){
             clearInterval(x);
         }
@@ -64,4 +64,4 @@
 
 
 
- 
+
