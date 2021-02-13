@@ -29,6 +29,19 @@ namespace Countdown_ASP.NET
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Created a CORS policy
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "policy",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyMethod();
+                        builder.AllowAnyHeader();
+                    });
+            });
+
+
             services.AddControllers();
 
             services.AddDbContext<ProductDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
@@ -54,10 +67,13 @@ namespace Countdown_ASP.NET
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //Enabling CORS to every request, needs to be added after UseRouting
+            app.UseCors("Policy");
 
             //app.UseAuthorization();
 
