@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import * as moment from 'moment'; // allows use of the "moment()" function in Typescript; required running "npm install --save moment" - https://stackoverflow.com/questions/35166168/how-to-use-moment-js-library-in-angular-2-typescript-app
 
+
 export { moment }
 
 @Component({
@@ -11,35 +12,67 @@ export { moment }
 })
 export class BooksComponent implements OnInit {
   books; //array of movie objects
+  tempItemList; //used to place product result objects in via iteration (to take them out of their arrays so that they'll be in one single array of book objects to iterater over vs an array of separate book category arrays)
   //baseIMGUrl = "https://image.tmdb.org/t/p/w500"; base URL for where the API stores the images, used in HTML file
   //variables used in for loop
   /*releaseDate;
   themovie;*/
+  tempUpcoming;
 
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    //partial subject list that might be used in a modified api function for the books found on the api.service.ts file. Perhaps get_books(subject) could be a function that's called here to iterate through the subjects below, and push resulting data for each query into a single book array.
     
-    //iterate through subjects to accumulate more book info
     
-    //let apiArr = ['https://www.googleapis.com/books/v1/volumes?q=subject:','SUBJECT', '&orderBy=newest&maxResults=40&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0']
-    //let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
-    //let apiStr = "";
+//loop through google books api using the subjects found on a list presumed to be used heavily by google books: https://bisg.org/page/bisacedition;
+//this is a partial subject list, only using the single-word subjects, for now.
+    
+    // let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
+    // let tempArr = [];
+    // let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
 
-    //for (let s of subjArr) {
-        //apiArr[1] = n;
-        // apiStr = apiArr.join();
-        //}
+    // for (let subject of subjArr) {
+    //   this.apiService.get_books2(subject).subscribe((data)=>{
+    //     tempArr = data['items'];
+    //     for (let item of tempArr) {
+    //       this.tempItemList = tempItemList.push(item);
+    //     }
+    //   });
+    // }
+    // this.books = tempItemList;
 
-    this.apiService.get_books().subscribe((data)=>{
-      this.books = data['items'];
-      //for loop used to visualize data on the console
-    });
+// only keeps the objects where the published date is later than today's date -- sort results by published date for the user using SQL?
+    let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
+    let tempArr = [];
+    let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
+    let tempUpcoming = [];
+    let dt2 : Date = new Date();
+
+    for (let subject of subjArr) {
+      this.apiService.get_books2(subject).subscribe((data)=>{
+        tempArr = data['items'];
+        for (let item of tempArr) {
+            let originalDate = moment(item['volumeInfo']['publishedDate'], "YYYY-MM-DD");
+            let isoDate = originalDate.format();
+            let dt1 : Date = new Date (isoDate);
+            if (dt1.getTime() - dt2.getTime() > 0) {
+              this.tempItemList = tempItemList.push(item);
+            }
+          // }
+        }
+      });
+    }
+    this.books = tempItemList;
+//===================ORIGINAL CODE BELOW=========================
+    // this.apiService.get_books().subscribe((data)=>{
+
+    //   this.books = data['items'];
+    //   //for loop used to visualize data on the console
+    // });
   }
-
-   dateToIsoFormat(releaseDate: string) : Date {
+  
+  dateToIsoFormat(releaseDate: string) : Date {
     // how to change string date to ISO format - https://stackoverflow.com/questions/35959853/convert-string-to-isodate
     let originalDate = moment(releaseDate, "YYYY-MM-DD");
     let isoDate = originalDate.format()

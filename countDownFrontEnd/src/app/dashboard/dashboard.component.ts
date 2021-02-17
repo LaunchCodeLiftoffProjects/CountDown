@@ -15,15 +15,39 @@ export class DashboardComponent implements OnInit {
   //variables used in for loop
   /*releaseDate;
   themovie;*/
-  upcomingMovies: Array<object>; //filters out movies that have been out for more than one day
+  tempItemList;
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.get_movies().subscribe((data)=>{
-      this.movies = data['results'];
-      //for loop used to visualize data on the console
-    });
+
+    let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
+    let tempArr = [];
+    let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
+    let tempUpcoming = [];
+    let dt2 : Date = new Date();
+
+    for (let i = 1; i < 10; i ++) {
+      this.apiService.get_movies2(i).subscribe((data)=>{
+        tempArr = data['results'];
+        for (let item of tempArr) {
+            let originalDate = moment(item['release_date'], "YYYY-MM-DD");
+            let isoDate = originalDate.format();
+            let dt1 : Date = new Date (isoDate);
+            if (dt1.getTime() - dt2.getTime() > 0) {
+              this.tempItemList = tempItemList.push(item);
+            }
+          // }
+        }
+      });
+    }
+    this.movies = tempItemList;
+
+// ORIGINAL CODE, BELOW =========================================
+    // this.apiService.get_movies().subscribe((data)=>{
+    //   this.movies = data['results'];
+    //   //for loop used to visualize data on the console
+    // });
   }
 
    dateToIsoFormat(releaseDate: string) : Date {
@@ -104,14 +128,5 @@ export class DashboardComponent implements OnInit {
     } else {
       return Math.ceil(diff_In_Sec);
     }  
-   }
-
-   currentMovies(): void {
-     for (let i = 0; i < this.movies.length; i++) {
-       if (this.secUntilRelease (this.movies[i].release_date) > -1 || (this.daysUntilRelease (this.movies[i].release_date) == 0 
-       && this.hoursUntilRelease (this.movies[i].release_date) > -24)) {
-         this.upcomingMovies.push(this.movies[i]);
-       } 
-     }
    }
 }
