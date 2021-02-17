@@ -12,9 +12,6 @@ export { moment }
 export class DashboardComponent implements OnInit {
   movies; //array of movie objects
   //baseIMGUrl = "https://image.tmdb.org/t/p/w500"; base URL for where the API stores the images, used in HTML file
-  //variables used in for loop
-  /*releaseDate;
-  themovie;*/
   tempItemList;
 
   constructor(private apiService: ApiService) { }
@@ -24,7 +21,6 @@ export class DashboardComponent implements OnInit {
     let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
     let tempArr = [];
     let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
-    let tempUpcoming = [];
     let dt2 : Date = new Date();
 
     for (let i = 1; i < 10; i ++) {
@@ -37,7 +33,6 @@ export class DashboardComponent implements OnInit {
             if (dt1.getTime() - dt2.getTime() > 0) {
               this.tempItemList = tempItemList.push(item);
             }
-          // }
         }
       });
     }

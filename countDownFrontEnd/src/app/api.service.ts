@@ -31,7 +31,7 @@ export class ApiService {
 
     //iterates through subjects to accumulate more book info
     subj = subj.toLowerCase();
-    let arr = ['https://www.googleapis.com/books/v1/volumes?q=subject:', subj, '&orderBy=newest&maxResults=5&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0'];
+    let arr = ['https://www.googleapis.com/books/v1/volumes?q=subject:', subj, '&orderBy=newest&maxResults=20&key=AIzaSyBHrS3H6G7LZWddfUHl0rTbVeHR7JCUoD0'];
     let getStr = arr.join("");
     return this.httpClient.get(getStr);
   }

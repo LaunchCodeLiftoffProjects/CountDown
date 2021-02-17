@@ -14,39 +14,15 @@ export class BooksComponent implements OnInit {
   books; //array of movie objects
   tempItemList; //used to place product result objects in via iteration (to take them out of their arrays so that they'll be in one single array of book objects to iterater over vs an array of separate book category arrays)
   //baseIMGUrl = "https://image.tmdb.org/t/p/w500"; base URL for where the API stores the images, used in HTML file
-  //variables used in for loop
-  /*releaseDate;
-  themovie;*/
-  tempUpcoming;
-
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    
-    
-//loop through google books api using the subjects found on a list presumed to be used heavily by google books: https://bisg.org/page/bisacedition;
-//this is a partial subject list, only using the single-word subjects, for now.
-    
-    // let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
-    // let tempArr = [];
-    // let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
-
-    // for (let subject of subjArr) {
-    //   this.apiService.get_books2(subject).subscribe((data)=>{
-    //     tempArr = data['items'];
-    //     for (let item of tempArr) {
-    //       this.tempItemList = tempItemList.push(item);
-    //     }
-    //   });
-    // }
-    // this.books = tempItemList;
 
 // only keeps the objects where the published date is later than today's date -- sort results by published date for the user using SQL?
     let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
     let tempArr = [];
     let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
-    let tempUpcoming = [];
     let dt2 : Date = new Date();
 
     for (let subject of subjArr) {
@@ -59,7 +35,6 @@ export class BooksComponent implements OnInit {
             if (dt1.getTime() - dt2.getTime() > 0) {
               this.tempItemList = tempItemList.push(item);
             }
-          // }
         }
       });
     }
