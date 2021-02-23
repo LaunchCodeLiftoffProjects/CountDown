@@ -1,0 +1,20 @@
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\bin\Debug\netcoreapp3.1\Countdown ASP.NET.exe
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\bin\Debug\netcoreapp3.1\Countdown ASP.NET.deps.json
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\bin\Debug\netcoreapp3.1\Countdown ASP.NET.runtimeconfig.json
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\bin\Debug\netcoreapp3.1\Countdown ASP.NET.runtimeconfig.dev.json
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\bin\Debug\netcoreapp3.1\Countdown ASP.NET.dll
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\bin\Debug\netcoreapp3.1\Countdown ASP.NET.pdb
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\Countdown ASP.NET.csprojAssemblyReference.cache
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\Countdown ASP.NET.AssemblyInfoInputs.cache
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\Countdown ASP.NET.AssemblyInfo.cs
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\Countdown ASP.NET.csproj.CoreCompileInputs.cache
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\Countdown ASP.NET.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\Countdown ASP.NET.RazorTargetAssemblyInfo.cache
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\staticwebassets\Countdown ASP.NET.StaticWebAssets.Manifest.cache
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\staticwebassets\Countdown ASP.NET.StaticWebAssets.xml
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\Countdown ASP.NET.dll
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\Countdown ASP.NET.pdb
+C:\Users\elber\Desktop\LC101\lift-off\Countdown ASP.NET\Countdown ASP.NET\obj\Debug\netcoreapp3.1\Countdown ASP.NET.genruntimeconfig.cache
