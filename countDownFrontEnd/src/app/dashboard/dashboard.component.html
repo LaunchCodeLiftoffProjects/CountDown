@@ -9,19 +9,21 @@
         <div id="card-header" class="card-header ml-auto">
             <!-- CLOCK -->
             <div class="count">
-                <div class="countd"><span id="day">00</span>Days</div>
-                <div class="countd"><span id="hour">00</span>Hours</div>
-                <div class="countd"><span id="minute">00</span>Minutes</div>
-                <div class="countd"><span id="second">00</span>Seconds</div>
+                <div class="countd"><span id="day">{{daysUntilRelease(movie.release_date)}}</span>Days</div>
+                <div class="countd"><span id="hour">{{hoursUntilRelease(movie.release_date)}}</span>Hours</div>
+                <div class="countd"><span id="minute">{{minsUntilRelease(movie.release_date)}}</span>Minutes</div>
+                <div class="countd"><span id="second">{{secUntilRelease(movie.release_date)}}</span>Seconds</div>
             </div>
         </div>
         <!-- CARD IMAGE SOMETHING WEIRD HAPPENS HERE  -->
-​         
+​
         <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="...">
         <!-- CARD BODY STARTS  -->
         <div class="card-body">
             <!-- CARD TEXT STARTS  -->
-            <h5 class="card-title"><span> <!--<img class="film-icon" src="/images/film.png" alt="">--></span>{{movie.title}}</h5>
+            <h5 class="card-title"><span> 
+                <img class="film-icon" src="/images/film.png" alt="">
+                {{movie.title}}</span></h5>
         </div>
         <!-- CARD BUTTONS AT BOTTOM  -->
         <div class="card-buttons">
@@ -33,26 +35,33 @@
     </div>
 
 <!--Probably could make this script code into a getCountdown function inside an load event-->
+
+
+
  <script>
      let count = new Date("Nov 21, 2021 00:00:00").getTime();
     let anothercount = new Date("June 5, 2021 00:00:00").getTime();
     let x = setInterval(function(){
         let now = new Date().getTime();
         let d = count - now;
-       
+
         let day = Math.floor(d/(1000 * 60 * 60 * 24));
         let hour = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         let minute = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
         let second = Math.floor((d % (1000 * 60)) / 1000);
-    
+
         document.getElementById('day').innerHTML = day;
         document.getElementById('hour').innerHTML = hour;
         document.getElementById('minute').innerHTML = minute;
         document.getElementById('second').innerHTML = second;
-    
+
         if(d <= 0){
             clearInterval(x);
         }
     }, 1000)
  </script>
- 
+
+
+
+
+

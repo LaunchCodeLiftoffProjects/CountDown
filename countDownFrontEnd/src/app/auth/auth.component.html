@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 mx-auto">
+      <div *ngIf="isLoading" style="text-align: center; margin-top: 8rem;">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <div class="login form"  *ngIf="!isLoading">
+        <div class="mb-3">
+          <div class="col-md-12 text-center">
+            <h1>{{ isLoginMode ? 'Login' : 'Sign Up' }}</h1>
+          </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="error">
+          <p>{{ error }}</p>
+        </div>
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              placeholder="Enter email"
+              ngModel
+              name="email"
+              required
+              email
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              placeholder="Enter Password"
+              ngModel
+              name="password"
+              required
+              minlength="6"
+              password
+            >
+          </div>
+          <br>
+            <div class="form-group">
+              <p class="text-center">By signing up you accept our <a href="/tos" >Terms Of Use</a></p>
+            </div>
+            <div class="col-md-12 text-center ">
+              <button
+                class="btn btn-block mybtn btn-primary"
+                type="submit"
+                [disabled]="!authForm.valid"
+                >
+                {{ isLoginMode ? 'Login' : 'Sign Up' }}
+              </button>
+              <button
+                class="btn btn-block mybtn btn-primary"
+                (click)="onSwitchMode()"
+                type="button">Switch to {{ isLoginMode ? 'Sign Up' : ' Login' }}
+              </button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
