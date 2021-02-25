@@ -39,6 +39,13 @@ export class AuthComponent {
     // extracts email and password values from the form data object
     const email = form.value.email;
     const password = form.value.password;
+    const name = form.value.name;
+    const passwordConfirm = form.value.passwordConfirm;
+
+    if (password !== passwordConfirm){
+      this.error = "Passwords do not match";
+      return this.error
+    }
 
     // defines authObs data type as the Observable type that will get back the information from our post requests in auth.service
     // it should contain information that looks like the AuthResponse Interface in auth.service
@@ -52,7 +59,7 @@ export class AuthComponent {
       authObs = this.authService.login(email, password);
     } else {
       // forwards the extracted email and password to the auth.services signup method/post request
-      authObs = this.authService.signup(email, password);
+      authObs = this.authService.signup(name, email, password);
     }
 
     // subscribes to the post response from the post login and signup post requests prepared above

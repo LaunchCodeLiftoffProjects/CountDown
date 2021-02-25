@@ -25,12 +25,13 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  signup(email: string, password: string) {
+  signup(name: string, email: string, password: string) {
     // currently sending and http post request to firebase, the object is the information it requires for their signup module
     // this will need to be replaced by whatever we are doing with our backend as this is firebase specific
     return this.http.post<AuthResponseData>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBGoJi8J7hj6UQE44GHV3-yRjKTYxVe00Q',
       {
+        name: name,
         email: email,
         password: password,
         returnSecureToken: true
