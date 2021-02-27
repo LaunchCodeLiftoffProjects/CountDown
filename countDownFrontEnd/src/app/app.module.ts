@@ -17,6 +17,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { TosComponent } from './tos/tos.component';
+import { AddOwnEventComponent } from './add-own-event/add-own-event.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TosComponent } from './tos/tos.component';
     PageNotFoundComponent,
     NavigationBarComponent,
     LoadingSpinnerComponent,
-    TosComponent
+    TosComponent,
+    AddOwnEventComponent
   ],
   imports: [
     BrowserModule,
