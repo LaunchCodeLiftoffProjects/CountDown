@@ -56,6 +56,8 @@ namespace Countdown_ASP.NET.Controllers
             
             if (user == null) return Unauthorized("Invalid email");
 
+            if (loginDto.Password != user.Password) return Unauthorized("Invalid Password");
+
             return new UserDTO
             {
                 Name = user.Name,
