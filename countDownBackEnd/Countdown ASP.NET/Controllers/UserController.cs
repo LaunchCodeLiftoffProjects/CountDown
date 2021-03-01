@@ -19,13 +19,18 @@ namespace Countdown_ASP.NET.Controllers
         public const string Entrypoint = "/api/users";
         private readonly ProductDbContext _dbContext;
         private readonly ITokenService _tokenService;
+        
 
         public UserController(ProductDbContext dbContext, ITokenService tokenService)
         {
             _tokenService = tokenService;
             _dbContext = dbContext;
         }
-
+        //Checks the database to see if a name already exists
+        private async Task<bool> UserExists(string username)
+        {
+            return await _dbContext.Users.AnyAsync(x => x.Name == username.ToLower());
+        }
 
         [HttpPost("register")]
         [SwaggerOperation(OperationId = "RegisterUser", Summary = "Adds a new user")]
@@ -33,6 +38,7 @@ namespace Countdown_ASP.NET.Controllers
         [SwaggerResponse(400, "Invalid or missing data", Type = null)]
         public async Task<ActionResult<UserDTO>> RegisterUser([FromBody] NewUserDTO NewUserDto)
         {
+            if (await UserExists(NewUserDto.Name)) return BadRequest("Username is taken");
             var userEntry = _dbContext.Users.Add(new User());
             userEntry.CurrentValues.SetValues(NewUserDto);
             await _dbContext.SaveChangesAsync();
