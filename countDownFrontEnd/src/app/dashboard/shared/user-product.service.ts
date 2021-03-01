@@ -21,6 +21,7 @@ export class UserProductService {
   constructor(private http:HttpClient) { }
 
   postUserProductDetail(formData: Product) {
-    return this.http.post(this.rootUrl + "/products", formData)
+    // return this.http.post(this.rootUrl + "/products", formData)
+    return this.http.post(this.rootUrl + "/RegisterProduct", formData)
   }
 }
