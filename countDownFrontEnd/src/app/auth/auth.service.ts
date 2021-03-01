@@ -29,7 +29,7 @@ export class AuthService {
     // currently sending and http post request to firebase, the object is the information it requires for their signup module
     // this will need to be replaced by whatever we are doing with our backend as this is firebase specific
     return this.http.post<AuthResponseData>(
-      'https://localhost:5001/api/users/register',
+      'https://localhost:44345/api/users/register',
       {
         name: name,
         email: email,
@@ -56,7 +56,7 @@ export class AuthService {
     // currently sending and http post request to firebase, the object is the information it requires for their signup module
     // this will need to be replaced by whatever we are doing with our backend as this is firebase specific
     return this.http.post<AuthResponseData>(
-      'https://localhost:5001/api/users/login',
+      'https://localhost:44345/api/users/login',
       {
         email: email,
         password: password,
