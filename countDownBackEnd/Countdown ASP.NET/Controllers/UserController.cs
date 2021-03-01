@@ -38,6 +38,7 @@ namespace Countdown_ASP.NET.Controllers
             await _dbContext.SaveChangesAsync();
 
             var newUser = userEntry.Entity;
+            
 
             return new UserDTO
             {
