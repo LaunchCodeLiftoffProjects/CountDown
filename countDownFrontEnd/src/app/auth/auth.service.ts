@@ -6,8 +6,7 @@ import { BehaviorSubject, throwError } from 'rxjs';
 
 import { User } from './user.model';
 
-// defines the format of the information we expect to get back, this will need to be replaced with our backend equivalent
-// currently this is what firebase will send back to us
+// defines the format of the information we expect to get back.
 export interface AuthResponseData {
   name: string;
   token: string;
@@ -21,8 +20,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   signup(name: string, email: string, password: string) {
-    // currently sending and http post request to firebase, the object is the information it requires for their signup module
-    // this will need to be replaced by whatever we are doing with our backend as this is firebase specific
+
     return this.http.post<AuthResponseData>(
       'https://localhost:5001/api/users/register',
       {
@@ -45,8 +43,7 @@ export class AuthService {
   }
 
   login(email: string, password: string){
-    // currently sending and http post request to firebase, the object is the information it requires for their signup module
-    // this will need to be replaced by whatever we are doing with our backend as this is firebase specific
+
     return this.http.post<AuthResponseData>(
       'https://localhost:5001/api/users/login',
       {
@@ -67,37 +64,12 @@ export class AuthService {
     );
   }
 
-  // autoLogin() {
-  //   const userData: {
-  //     name: string;
-  //     token: string;
-  //     _tokenExpirationDate: string;
-  //   } = JSON.parse(localStorage.getItem('userData'));
-  //   if (!userData){
-  //     return;
-  //   }
-
-  //   const loadedUser = new User(
-  //     userData.email,
-  //     userData.id,
-  //     userData._token,
-  //     new Date(userData._tokenExpirationDate)
-  //     );
-
-  //     if (loadedUser.token){
-  //       this.user.next(loadedUser);
-  //     }
-  // }
-
   logout() {
     this.user.next(null);
     this.router.navigate(['/authentication']);
   }
 
-  private handleAuthentication(
-    name: string,
-    token: string,
-  )  {
+  private handleAuthentication(name: string, token: string)  {
 
     // creates new user with the info passed in from resData and the expirationDate we just caclulated
     const user = new User(name, token);
@@ -110,26 +82,13 @@ export class AuthService {
 
   // Error handling method, will need to make this specific to our backend
   private handleError(errorRes: HttpErrorResponse){
-    // creates default error message
+
     let errorMessage = 'An unknown error occurred.';
-    // checks to see if errors are present
-    if (!errorRes.error || !errorRes.error.error){
-      // if no known error is found in the back end data object, we return the default error message
-      return throwError(errorMessage);
+
+    if (errorRes.error) {
+      errorMessage = errorRes.error;
     }
-    // if known errors are found in the back end data object, we check to see which one it is
-    // and change the errrorMessage variable to the error message we created for each case
-    switch (errorRes.error.error.message){
-      case 'EMAIL_EXISTS':
-        errorMessage = 'User already exists';
-        break;
-      case 'EMAIL_NOT_FOUND':
-        errorMessage = 'This email is not assigned to a current user.';
-        break;
-      case 'INVALID_PASSWORD':
-        errorMessage = 'This password is not correct.';
-    }
-    // returns the error specific message
+
     return throwError(errorMessage);
   }
 }
