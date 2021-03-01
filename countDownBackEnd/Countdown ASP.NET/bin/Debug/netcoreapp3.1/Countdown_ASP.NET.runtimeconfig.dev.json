@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/Rafa/.dotnet/store/|arch|/|tfm|",
-      "/Users/Rafa/.nuget/packages"
+      "C:\\Users\\elber\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\elber\\.nuget\\packages"
     ]
   }
 }

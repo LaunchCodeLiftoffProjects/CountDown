@@ -14,6 +14,19 @@
           <p>{{ error }}</p>
         </div>
         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+          <div class="form-group" *ngIf="!isLoginMode">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              placeholder="Enter name"
+              ngModel
+              name="name"
+              required
+            >
+          </div>
+
           <div class="form-group">
             <label for="email">Email address</label>
             <input
@@ -42,6 +55,22 @@
               password
             >
           </div>
+
+          <div class="form-group" *ngIf="!isLoginMode">
+            <label for="password">Confirm Password</label>
+            <input
+              type="password"
+              id="passwordConfirm"
+              class="form-control"
+              placeholder="Confirm Password"
+              ngModel
+              name="passwordConfirm"
+              required
+              minlength="6"
+              password
+            >
+          </div>
+
           <br>
             <div class="form-group">
               <p class="text-center">By signing up you accept our <a href="/tos" >Terms Of Use</a></p>

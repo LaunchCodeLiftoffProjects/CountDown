@@ -14,6 +14,9 @@ using Countdown_ASP.NET.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Countdown_ASP.NET.Interfaces;
+using Countdown_ASP.NET.Services;
+using Newtonsoft.Json.Serialization;
 
 namespace Countdown_ASP.NET
 {
@@ -29,17 +32,25 @@ namespace Countdown_ASP.NET
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITokenService, TokenService>();
             //Created a CORS policy
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: "policy",
-                    builder =>
-                    {
-                        builder.AllowAnyOrigin();
-                        builder.AllowAnyMethod();
-                        builder.AllowAnyHeader();
-                    });
-            });
+            // services.AddCors(options =>
+            // {
+            //     options.AddPolicy(name: "policy",
+            //         builder =>
+            //         {
+            //             builder.AllowAnyOrigin();
+            //             builder.AllowAnyMethod();
+            //             builder.AllowAnyHeader();
+            //         });
+            // });
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                });
+
+            services.AddCors();
 
 
             services.AddControllers();
@@ -73,7 +84,7 @@ namespace Countdown_ASP.NET
             app.UseRouting();
 
             //Enabling CORS to every request, needs to be added after UseRouting
-            app.UseCors("Policy");
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
             //app.UseAuthorization();
 
@@ -98,3 +109,4 @@ namespace Countdown_ASP.NET
         }
     }
 }
+

@@ -17,7 +17,10 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { TosComponent } from './tos/tos.component';
-import { AddOwnEventComponent } from './add-own-event/add-own-event.component';
+import { UserProductsComponent } from './dashboard/user-products/user-products.component';
+import { UserProductComponent } from './dashboard/user-products/user-product/user-product.component';
+import { UserProductListComponent } from './dashboard/user-products/user-product-list/user-product-list.component';
+import { UserProductService } from './dashboard/shared/user-product.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { AddOwnEventComponent } from './add-own-event/add-own-event.component';
     NavigationBarComponent,
     LoadingSpinnerComponent,
     TosComponent,
-    AddOwnEventComponent
+    UserProductsComponent,
+    UserProductComponent,
+    UserProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,7 @@ import { AddOwnEventComponent } from './add-own-event/add-own-event.component';
     RoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

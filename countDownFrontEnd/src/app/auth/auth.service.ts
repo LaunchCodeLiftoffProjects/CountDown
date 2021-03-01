@@ -25,125 +25,126 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  signup(email: string, password: string) {
+  signup(name: string, email: string, password: string) {
     // currently sending and http post request to firebase, the object is the information it requires for their signup module
     // this will need to be replaced by whatever we are doing with our backend as this is firebase specific
     return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBGoJi8J7hj6UQE44GHV3-yRjKTYxVe00Q',
+      'https://localhost:44345/api/users/register',
       {
+        name: name,
         email: email,
         password: password,
-        returnSecureToken: true
+        // returnSecureToken: true
       }
     )
-    .pipe(
-      // error handling, passing in our handleError method
-      catchError(this.handleError),
-      // checks authentication
-      tap(resData => {
-        this.handleAuthentication(
-          resData.email,
-          resData.localId,
-          resData.idToken,
-          +resData.expiresIn
-        );
-      })
-    );
+    // .pipe(
+    //   // error handling, passing in our handleError method
+    //   catchError(this.handleError),
+    //   // checks authentication
+    //   tap(resData => {
+    //     this.handleAuthentication(
+    //       resData.email,
+    //       resData.localId,
+    //       resData.idToken,
+    //       +resData.expiresIn
+    //     );
+    //   })
+    // );
   }
 
   login(email: string, password: string){
     // currently sending and http post request to firebase, the object is the information it requires for their signup module
     // this will need to be replaced by whatever we are doing with our backend as this is firebase specific
     return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBGoJi8J7hj6UQE44GHV3-yRjKTYxVe00Q',
+      'https://localhost:44345/api/users/login',
       {
         email: email,
         password: password,
-        returnSecureToken: true
+        // returnSecureToken: true
       }
     )
-    .pipe(
-      // error handling, passing in our handleError method
-      catchError(this.handleError),
-      // checks authentication
-      tap(resData => {
-        this.handleAuthentication(
-          resData.email,
-          resData.localId,
-          resData.idToken,
-          +resData.expiresIn
-        );
-      })
-    );
+    // .pipe(
+    //   // error handling, passing in our handleError method
+    //   catchError(this.handleError),
+    //   // checks authentication
+    //   tap(resData => {
+    //     this.handleAuthentication(
+    //       resData.email,
+    //       resData.localId,
+    //       resData.idToken,
+    //       +resData.expiresIn
+    //     );
+    //   })
+    // );
   }
 
-  autoLogin() {
-    const userData: {
-      email: string;
-      id: string;
-      _token: string;
-      _tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem('userData'));
-    if (!userData){
-      return;
-    }
+  // autoLogin() {
+  //   const userData: {
+  //     name: string;
+  //     token: string;
+  //     _tokenExpirationDate: string;
+  //   } = JSON.parse(localStorage.getItem('userData'));
+  //   if (!userData){
+  //     return;
+  //   }
 
-    const loadedUser = new User(
-      userData.email,
-      userData.id,
-      userData._token,
-      new Date(userData._tokenExpirationDate)
-      );
+  //   const loadedUser = new User(
+  //     userData.email,
+  //     userData.id,
+  //     userData._token,
+  //     new Date(userData._tokenExpirationDate)
+  //     );
 
-      if (loadedUser.token){
-        this.user.next(loadedUser);
-      }
-  }
+  //     if (loadedUser.token){
+  //       this.user.next(loadedUser);
+  //     }
+  // }
 
-  logout() {
-    this.user.next(null);
-    this.router.navigate(['/authentication']);
-  }
+  // logout() {
+  //   this.user.next(null);
+  //   this.router.navigate(['/authentication']);
+  // }
 
-  private handleAuthentication(
-    email: string,
-    userId: string,
-    token: string,
-    expiresIn: number
-  )  {
-    // converts the expiresIn into a new Date object that represents the expiry time
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    // creates new user with the info passed in from resData and the expirationDate we just caclulated
-    const user = new User(email, userId, token, expirationDate);
-    // makes this our now currently logged in user in the app
-    this.user.next(user);
-    // allows you to write an item to local storage, in this case, our user object so our login
-    // survives browser reloads
-    localStorage.setItem('userData', JSON.stringify(user));
-  }
+  // private handleAuthentication(
+  //   email: string,
+  //   userId: string,
+  //   token: string,
+  //   expiresIn: number
+  // )  {
+  //   // converts the expiresIn into a new Date object that represents the expiry time
+  //   const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+  //   // creates new user with the info passed in from resData and the expirationDate we just caclulated
+  //   const user = new User(email, userId, token, expirationDate);
+  //   // makes this our now currently logged in user in the app
+  //   this.user.next(user);
+  //   // allows you to write an item to local storage, in this case, our user object so our login
+  //   // survives browser reloads
+  //   localStorage.setItem('userData', JSON.stringify(user));
+  // }
 
-  // Error handling method, will need to make this specific to our backend
-  private handleError(errorRes: HttpErrorResponse){
-    // creates default error message
-    let errorMessage = 'An unknown error occurred.';
-    // checks to see if errors are present
-    if (!errorRes.error || !errorRes.error.error){
-      // if no known error is found in the back end data object, we return the default error message
-      return throwError(errorMessage);
-    }
-    // if known errors are found in the back end data object, we check to see which one it is
-    // and change the errrorMessage variable to the error message we created for each case
-    switch (errorRes.error.error.message){
-      case 'EMAIL_EXISTS':
-        errorMessage = 'User already exists';
-        break;
-      case 'EMAIL_NOT_FOUND':
-        errorMessage = 'This email is not assigned to a current user.';
-        break;
-      case 'INVALID_PASSWORD':
-        errorMessage = 'This password is not correct.';
-    }
-    // returns the error specific message
-    return throwError(errorMessage);
-  }
+  // // Error handling method, will need to make this specific to our backend
+  // private handleError(errorRes: HttpErrorResponse){
+  //   // creates default error message
+  //   let errorMessage = 'An unknown error occurred.';
+  //   // checks to see if errors are present
+  //   if (!errorRes.error || !errorRes.error.error){
+  //     // if no known error is found in the back end data object, we return the default error message
+  //     return throwError(errorMessage);
+  //   }
+  //   // if known errors are found in the back end data object, we check to see which one it is
+  //   // and change the errrorMessage variable to the error message we created for each case
+  //   switch (errorRes.error.error.message){
+  //     case 'EMAIL_EXISTS':
+  //       errorMessage = 'User already exists';
+  //       break;
+  //     case 'EMAIL_NOT_FOUND':
+  //       errorMessage = 'This email is not assigned to a current user.';
+  //       break;
+  //     case 'INVALID_PASSWORD':
+  //       errorMessage = 'This password is not correct.';
+  //   }
+  //   // returns the error specific message
+  //   return throwError(errorMessage);
+  // }
 }
+

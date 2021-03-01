@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,27 +10,28 @@ namespace Countdown_ASP.NET.Models
     public class User
     {
         public int Id { get; set; }
-        public UserRole Role { get; set; }
+        // public UserRole Role { get; set; }
 
 
         //public ProductContributor Contributor { get; set; }
 
         //public int ContributorID { get; set; } // As a vendor they'll automatically be given a ContributorId -- Contributor object "Name" will be entered manually or pulled in from User object if an existing User is selected as a "Contributor" from the dropdown list is present
 
-        public int RoleId { get; set; } // User Role is automatically determined as "Authenticated User", unless they have a VID (vender ID) associated with any products, in which case they'll have more authority over that specific collection of product(s)
+        // public int RoleId { get; set; } // User Role is automatically determined as "Authenticated User", unless they have a VID (vender ID) associated with any products, in which case they'll have more authority over that specific collection of product(s)
         public string Name { get; set; }
 
         public string Email { get; set; }
-
         public string Password { get; set; }
 
+        /*
         public User(string name, string email, string password)
         {
             Name = name;
             Email = email;
             Password = password;
-            RoleId = 1; // assuming the number "1" represents this level of authorization
+            //RoleId = 1; // assuming the number "1" represents this level of authorization
         }
+        */
     }
 }
 
@@ -37,3 +40,32 @@ namespace Countdown_ASP.NET.Models
 // like for a music artist who's posting on behalf of a band under a bandname. The VendorId will be linked to their UserId and to any products treate, where they check that box. The Vendor's name can then be added to a 
 // dropdown list of Vendor names for other users to select from if they are creating their own 'events'. The VendorId is seperate from the UserId so 
 
+public class NewUserDTO
+{
+    [NotNull]
+    [Required]
+    public string Name { get; set; }
+    [NotNull]
+    [Required]
+    public string Email { get; set; }
+    [NotNull]
+    [Required]
+    public string Password { get; set; }
+}
+
+public class LoginDTO
+{
+    [NotNull]
+    [Required]
+    public string Email { get; set; }
+    [NotNull]
+    [Required]
+    public string Password { get; set; }
+}
+
+public class UserDTO
+{
+    public string Name { get; set; }
+
+    public string Token { get; set; }
+}
