@@ -22,7 +22,6 @@ import { UserProductComponent } from './dashboard/user-products/user-product/use
 import { UserProductListComponent } from './dashboard/user-products/user-product-list/user-product-list.component';
 import { UserProductService } from './dashboard/shared/user-product.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,9 +38,7 @@ import { UserProductService } from './dashboard/shared/user-product.service';
     LoadingSpinnerComponent,
     TosComponent,
     UserProductsComponent,
-    UserProductsComponent,
     UserProductComponent,
-    UserProductListComponent,
     UserProductListComponent
   ],
   imports: [
