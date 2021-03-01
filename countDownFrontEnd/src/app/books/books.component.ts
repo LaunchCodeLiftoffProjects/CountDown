@@ -19,26 +19,26 @@ export class BooksComponent implements OnInit {
 
   ngOnInit(): void {
 
-// only keeps the objects where the published date is later than today's date -- sort results by published date for the user using SQL?
-    let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
-    let tempArr = [];
-    let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
-    let dt2 : Date = new Date();
-
-    for (let subject of subjArr) {
-      this.apiService.get_books2(subject).subscribe((data)=>{
-        tempArr = data['items'];
-        for (let item of tempArr) {
-            let originalDate = moment(item['volumeInfo']['publishedDate'], "YYYY-MM-DD");
-            let isoDate = originalDate.format();
-            let dt1 : Date = new Date (isoDate);
-            if (dt1.getTime() - dt2.getTime() > 0) {
-              this.tempItemList = tempItemList.push(item);
+    // only keeps the objects where the published date is later than today's date -- sort results by published date for the user using SQL?
+        let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
+        let tempArr = [];
+        let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
+        let dt2 : Date = new Date();
+    
+        for (let subject of subjArr) {
+          this.apiService.get_books2(subject).subscribe((data)=>{
+            tempArr = data['items'];
+            for (let item of tempArr) {
+                let originalDate = moment(item['volumeInfo']['publishedDate'], "YYYY-MM-DD");
+                let isoDate = originalDate.format();
+                let dt1 : Date = new Date (isoDate);
+                if (dt1.getTime() - dt2.getTime() > 0 && item['volumeInfo']['imageLinks']['thumbnail'] != null) {
+                  this.tempItemList = tempItemList.push(item);
+                }
             }
+          });
         }
-      });
-    }
-    this.books = tempItemList;
+        this.books = tempItemList;    
 //===================ORIGINAL CODE BELOW=========================
     // this.apiService.get_books().subscribe((data)=>{
 
