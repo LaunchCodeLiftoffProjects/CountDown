@@ -30,19 +30,20 @@ namespace Countdown_ASP.NET.Controllers
         [SwaggerOperation(OperationId = "RegisterUser", Summary = "Adds a new user")]
         [SwaggerResponse(201, "Returns registered user", Type = typeof(User))]
         [SwaggerResponse(400, "Invalid or missing data", Type = null)]
-        public async Task<ActionResult<User>> RegisterUser([FromBody] NewUserDTO NewUserDto)
+        public async Task<ActionResult<UserDTO>> RegisterUser([FromBody] NewUserDTO NewUserDto)
         {
             var userEntry = _dbContext.Users.Add(new User());
             userEntry.CurrentValues.SetValues(NewUserDto);
             await _dbContext.SaveChangesAsync();
 
             var newUser = userEntry.Entity;
+            
 
-            return CreatedAtAction(
-              nameof(GetUser),
-              new { entityId = newUser.Id },
-              newUser
-            );
+            return new UserDTO
+            {
+                Name = newUser.Name,
+                Token = _tokenService.CreateToken(newUser)
+            };
         }
 
         [HttpPost("login")]
