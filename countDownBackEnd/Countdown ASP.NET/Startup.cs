@@ -16,6 +16,7 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Countdown_ASP.NET.Interfaces;
 using Countdown_ASP.NET.Services;
+using Newtonsoft.Json.Serialization;
 
 namespace Countdown_ASP.NET
 {
@@ -43,6 +44,12 @@ namespace Countdown_ASP.NET
             //             builder.AllowAnyHeader();
             //         });
             // });
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                });
+
             services.AddCors();
 
 

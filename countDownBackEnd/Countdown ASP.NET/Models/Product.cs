@@ -9,31 +9,32 @@ namespace Countdown_ASP.NET.Models
 {
     public class Product : UniqueEntity
     {
-        public ProductType Type { get; set; }
+        //public ProductType Type { get; set; }
 
-        public int TypeId { get; set; }
+        //public int TypeId { get; set; }
 
-        public List<ProductCategory> Categories { get; set; }
+        //public List<ProductCategory> Categories { get; set; }
 
         public string Title { get; set; }
+        public string ImgLink { get; set; }
 
-        public User User { get; set; } // artist who has the right to sell and promote the work under their own name or on behalf of a single team/band
+        //public User User { get; set; } // artist who has the right to sell and promote the work under their own name or on behalf of a single team/band
 
-        public int UserId { get; set; }
+        //public int UserId { get; set; }
 
-        public ProductSingleVendor Vendor { get; set; } // artist who has the right to sell and promote the work under their own name or on behalf of a single team/band
+        //public ProductSingleVendor Vendor { get; set; } // artist who has the right to sell and promote the work under their own name or on behalf of a single team/band
 
-        public int VendorId { get; set; }
+        //public int VendorId { get; set; }
 
-        public ProductMultiVendor MultiVendor { get; set; } // production company, publishing house, record company, who has right to sell products under *several* vendor names
+        //public ProductMultiVendor MultiVendor { get; set; } // production company, publishing house, record company, who has right to sell products under *several* vendor names
 
-        public int MultiVendorId { get; set; }
+        //public int MultiVendorId { get; set; }
 
-        public string Description { get; set; }
+        //public string Description { get; set; }
 
         public DateTime ReleaseDate { get; set; }
 
-        public bool Verified { get; set; } // is the userId connected to someone who has the same Single Vendor Id (or Multi-Vendor Id, if one is present) as what's connected to this product? So, a user or 
+        //public bool Verified { get; set; } // is the userId connected to someone who has the same Single Vendor Id (or Multi-Vendor Id, if one is present) as what's connected to this product? So, a user or 
         // vendor can CRUD their own events, but the events won't be "verified" unless their Vendor or multi-vendor ide matches either the single or multi-vendor Id associated with the produdt.
 
 
@@ -48,9 +49,9 @@ namespace Countdown_ASP.NET.Models
 
     public class NewProductDto
     {
-        [NotNull]
-        [Required]
-        public ProductType Type { get; set; }
+        //[NotNull]
+        //[Required]
+        //public ProductType Type { get; set; }
 
         [NotNull]
         [Required]
@@ -63,20 +64,29 @@ namespace Countdown_ASP.NET.Models
 
         [NotNull]
         [Required]
+        [StringLength(
+            200,
+            MinimumLength = 10,
+            ErrorMessage = "Title must be between 10 and 200 characters"
+            )]
+        public string ImgLink { get; set; }
+
+        [NotNull]
+        [Required]
         public DateTime ReleaseDate { get; set; }
 
-        [NotNull]
-        [Required]
-        [StringLength(
-            100,
-            MinimumLength = 3,
-            ErrorMessage = "Name of the Artist/Representative must be between 3 and 100 characters"
-            )]
-        public string Vendor { get; set; }
+        //[NotNull]
+        //[Required]
+        //[StringLength(
+        //    100,
+        //    MinimumLength = 3,
+        //    ErrorMessage = "Name of the Artist/Representative must be between 3 and 100 characters"
+        //    )]
+        //public string Vendor { get; set; }
 
-        [NotNull]
-        [Required]
-        [StringLength(1000, ErrorMessage = "Description can't be more than 1000 characters")]
-        public string Description { get; set; }
+        //[NotNull]
+        //[Required]
+        //[StringLength(1000, ErrorMessage = "Description can't be more than 1000 characters")]
+        //public string Description { get; set; }
     }
 }
