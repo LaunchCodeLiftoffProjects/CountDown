@@ -11,7 +11,7 @@ import { SettingsComponent } from '../settings/settings.component';
 import { AuthComponent } from '../auth/auth.component';
 import { TosComponent } from '../tos/tos.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
-
+import { AddOwnEventComponent } from '../add-own-event/add-own-event.component';
 const routes: Routes = [
   {
     path: 'dashboard',
@@ -53,6 +53,10 @@ const routes: Routes = [
   {
     path: 'tos',
     component: TosComponent
+  },
+  {
+    path: 'add-own-event',
+    component: AddOwnEventComponent
   },
   {
     path: '**',
