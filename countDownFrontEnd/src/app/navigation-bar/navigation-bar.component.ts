@@ -19,9 +19,9 @@ export class NavigationBarComponent implements OnInit, OnDestroy {
     });
   }
   // calls the logout function in auth.serves.ts to logout user
-  // onLogout(){
-  //   this.authService.logout();
-  // }
+  onLogout(){
+    this.authService.logout();
+  }
 
   ngOnDestroy(){
     this.userSub.unsubscribe();

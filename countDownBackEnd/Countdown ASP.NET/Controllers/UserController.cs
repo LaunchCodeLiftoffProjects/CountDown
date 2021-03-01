@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
 using Countdown_ASP.NET.Models;
 using Countdown_ASP.NET.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Countdown_ASP.NET.Controllers
 {
@@ -30,7 +31,7 @@ namespace Countdown_ASP.NET.Controllers
         [SwaggerOperation(OperationId = "RegisterUser", Summary = "Adds a new user")]
         [SwaggerResponse(201, "Returns registered user", Type = typeof(User))]
         [SwaggerResponse(400, "Invalid or missing data", Type = null)]
-        public async Task<ActionResult<User>> RegisterUser([FromBody] NewUserDTO NewUserDto)
+        public async Task<ActionResult<UserDTO>> RegisterUser([FromBody] NewUserDTO NewUserDto)
         {
             var userEntry = _dbContext.Users.Add(new User());
             userEntry.CurrentValues.SetValues(NewUserDto);
@@ -38,11 +39,11 @@ namespace Countdown_ASP.NET.Controllers
 
             var newUser = userEntry.Entity;
 
-            return CreatedAtAction(
-              nameof(GetUser),
-              new { entityId = newUser.Id },
-              newUser
-            );
+            return new UserDTO
+            {
+                Name = newUser.Name,
+                Token = _tokenService.CreateToken(newUser)
+            };
         }
 
         [HttpPost("login")]
@@ -65,7 +66,7 @@ namespace Countdown_ASP.NET.Controllers
             };
         }
 
-
+        [Authorize]
         [HttpGet]
         [Route("{userId}")]
         [SwaggerOperation(OperationId = "Get User", Summary = "Retrieves user")]
@@ -76,7 +77,7 @@ namespace Countdown_ASP.NET.Controllers
             var user = _dbContext.Users.Find(userId);
             if (user == null) return NotFound();
 
-            return Ok(User);
+            return Ok(user);
         }
     }
 }

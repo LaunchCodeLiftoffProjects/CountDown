@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "NglIqUoe4KcdMoexsnQYobWW/OCAIzeG81iKz7zoGfw+ZVgibBRfvTCnvK9nOKdheJG2Wgq4nAtaBdT9zgnT7A==",
+  "dgSpecHash": "U3ZAdHCVeUCeKV0W3ny1We6Iq6p75DQmZtQ8x6uS/7g4h2vixf1qLnDYXC1BWk6heSbUVP1WCHaw4lMj/gOiJQ==",
   "success": true,
   "projectFilePath": "/Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/Countdown_ASP.NET.csproj",
   "expectedPackageFiles": [
+    "/Users/sasha/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/3.1.0/microsoft.aspnetcore.authentication.jwtbearer.3.1.0.nupkg.sha512",
     "/Users/sasha/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/sasha/.nuget/packages/microsoft.bcl.hashcode/1.1.1/microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "/Users/sasha/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
@@ -28,6 +29,8 @@
     "/Users/sasha/.nuget/packages/microsoft.extensions.primitives/3.1.11/microsoft.extensions.primitives.3.1.11.nupkg.sha512",
     "/Users/sasha/.nuget/packages/microsoft.identitymodel.jsonwebtokens/6.8.0/microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg.sha512",
     "/Users/sasha/.nuget/packages/microsoft.identitymodel.logging/6.8.0/microsoft.identitymodel.logging.6.8.0.nupkg.sha512",
+    "/Users/sasha/.nuget/packages/microsoft.identitymodel.protocols/5.5.0/microsoft.identitymodel.protocols.5.5.0.nupkg.sha512",
+    "/Users/sasha/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/5.5.0/microsoft.identitymodel.protocols.openidconnect.5.5.0.nupkg.sha512",
     "/Users/sasha/.nuget/packages/microsoft.identitymodel.tokens/6.8.0/microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "/Users/sasha/.nuget/packages/microsoft.netcore.platforms/1.0.1/microsoft.netcore.platforms.1.0.1.nupkg.sha512",
     "/Users/sasha/.nuget/packages/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg.sha512",

@@ -231,3 +231,6 @@ C:/Users/elber/Desktop/LC101/lift-off/assignments/countDownBackEnd/Countdown ASP
 /Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/obj/Debug/netcoreapp3.1/Countdown_ASP.NET.dll
 /Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/obj/Debug/netcoreapp3.1/Countdown_ASP.NET.pdb
 /Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/obj/Debug/netcoreapp3.1/Countdown_ASP.NET.genruntimeconfig.cache
+/Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
+/Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
