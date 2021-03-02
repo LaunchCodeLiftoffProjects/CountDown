@@ -2090,12 +2090,11 @@
       ]
     },
     "System.Dynamic.Runtime/4.0.11": {
-      "sha512": "db34f6LHYM0U0JpE+sOmjar27BnqTVkbLJhgfwMpTdgTigG/Hna3m2MYVwnFzGGKnEJk2UXFuoVTr8WUbU91/A==",
+      "sha512": "gmRQPMWWxgtCY7agBTGFvAdow8oFxsAV1xQzz3obHtQ7Bnl1UFXTKwDv3WxJskFhfmY58HsnoQhOF941WZP6YQ==",
       "type": "package",
       "path": "system.dynamic.runtime/4.0.11",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -3629,29 +3628,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/sasha/.nuget/packages/": {}
+    "C:\\Users\\mrm\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/Countdown_ASP.NET.csproj",
+      "projectUniqueName": "C:\\Users\\mrm\\Desktop\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
       "projectName": "Countdown_ASP.NET",
-      "projectPath": "/Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/Countdown_ASP.NET.csproj",
-      "packagesPath": "/Users/sasha/.nuget/packages/",
-      "outputPath": "/Users/sasha/Desktop/FINAL/CountDown/countDownBackEnd/Countdown ASP.NET/obj/",
+      "projectPath": "C:\\Users\\mrm\\Desktop\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
+      "packagesPath": "C:\\Users\\mrm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mrm\\Desktop\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/Users/sasha/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\mrm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -3663,7 +3667,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
@@ -3718,7 +3721,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
