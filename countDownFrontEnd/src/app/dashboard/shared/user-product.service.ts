@@ -17,7 +17,7 @@ export class UserProductService {
     this._formData = value;
   }
 
-  readonly rootUrl = "https://localhost:44345/api";
+  readonly rootUrl = "https://localhost:44313/api"; //you have to change this so that you're using the local host port for your computer
 
   constructor(private http:HttpClient) { }
 
