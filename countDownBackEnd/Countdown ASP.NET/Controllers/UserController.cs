@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
 using Countdown_ASP.NET.Models;
 using Countdown_ASP.NET.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Countdown_ASP.NET.Controllers
 {
@@ -18,31 +19,38 @@ namespace Countdown_ASP.NET.Controllers
         public const string Entrypoint = "/api/users";
         private readonly ProductDbContext _dbContext;
         private readonly ITokenService _tokenService;
+        
 
         public UserController(ProductDbContext dbContext, ITokenService tokenService)
         {
             _tokenService = tokenService;
             _dbContext = dbContext;
         }
-
+        //Checks the database to see if a name already exists
+        private async Task<bool> UserExists(string username)
+        {
+            return await _dbContext.Users.AnyAsync(x => x.Name == username.ToLower());
+        }
 
         [HttpPost("register")]
         [SwaggerOperation(OperationId = "RegisterUser", Summary = "Adds a new user")]
         [SwaggerResponse(201, "Returns registered user", Type = typeof(User))]
         [SwaggerResponse(400, "Invalid or missing data", Type = null)]
-        public async Task<ActionResult<User>> RegisterUser([FromBody] NewUserDTO NewUserDto)
+        public async Task<ActionResult<UserDTO>> RegisterUser([FromBody] NewUserDTO NewUserDto)
         {
+            if (await UserExists(NewUserDto.Name)) return BadRequest("Username is taken");
             var userEntry = _dbContext.Users.Add(new User());
             userEntry.CurrentValues.SetValues(NewUserDto);
             await _dbContext.SaveChangesAsync();
 
             var newUser = userEntry.Entity;
+            
 
-            return CreatedAtAction(
-              nameof(GetUser),
-              new { entityId = newUser.Id },
-              newUser
-            );
+            return new UserDTO
+            {
+                Name = newUser.Name,
+                Token = _tokenService.CreateToken(newUser)
+            };
         }
 
         [HttpPost("login")]
@@ -56,6 +64,8 @@ namespace Countdown_ASP.NET.Controllers
             
             if (user == null) return Unauthorized("Invalid email");
 
+            if (loginDto.Password != user.Password) return Unauthorized("Invalid Password");
+
             return new UserDTO
             {
                 Name = user.Name,
@@ -63,7 +73,7 @@ namespace Countdown_ASP.NET.Controllers
             };
         }
 
-
+        [Authorize]
         [HttpGet]
         [Route("{userId}")]
         [SwaggerOperation(OperationId = "Get User", Summary = "Retrieves user")]
@@ -74,7 +84,7 @@ namespace Countdown_ASP.NET.Controllers
             var user = _dbContext.Users.Find(userId);
             if (user == null) return NotFound();
 
-            return Ok(User);
+            return Ok(user);
         }
     }
 }

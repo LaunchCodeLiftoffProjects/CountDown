@@ -47,10 +47,6 @@ export class AuthComponent {
       return this.error
     }
 
-    console.log(email);
-    console.log(password);
-    console.log(name);
-    console.log(passwordConfirm);
     // defines authObs data type as the Observable type that will get back the information from our post requests in auth.service
     // it should contain information that looks like the AuthResponse Interface in auth.service
     let authObs: Observable<AuthResponseData>;
@@ -77,7 +73,7 @@ export class AuthComponent {
       },
       // If post request fails this will be the error data we get back
       errorMessage => {
-        // console.log(errorMessage);
+        console.log(errorMessage);
         this.error = errorMessage;
         this.isLoading = false;
       }
