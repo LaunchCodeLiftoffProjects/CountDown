@@ -154,10 +154,6 @@ import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { User } from './user.model';
-<<<<<<< HEAD
-
-=======
->>>>>>> AddProductToDashboardTwo
 // defines the format of the information we expect to get back.
 export interface AuthResponseData {
   name: string;
@@ -169,10 +165,6 @@ export class AuthService {
   user = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient, private router: Router) {}
   signup(name: string, email: string, password: string) {
-<<<<<<< HEAD
-
-=======
->>>>>>> AddProductToDashboardTwo
     return this.http.post<AuthResponseData>(
       'https://localhost:5001/api/users/register',
       {
@@ -194,10 +186,6 @@ export class AuthService {
     );
   }
   login(email: string, password: string){
-<<<<<<< HEAD
-
-=======
->>>>>>> AddProductToDashboardTwo
     return this.http.post<AuthResponseData>(
       'https://localhost:5001/api/users/login',
       {
@@ -217,7 +205,6 @@ export class AuthService {
       })
     );
   }
-<<<<<<< HEAD
 
   logout() {
     this.user.next(null);
@@ -246,27 +233,4 @@ export class AuthService {
 
     return throwError(errorMessage);
   }
-=======
-  logout() {
-    this.user.next(null);
-    this.router.navigate(['/authentication']);
-  }
-  private handleAuthentication(name: string, token: string)  {
-    // creates new user with the info passed in from resData and the expirationDate we just caclulated
-    const user = new User(name, token);
-    // makes this our now currently logged in user in the app
-    this.user.next(user);
-    // allows you to write an item to local storage, in this case, our user object so our login
-    // survives browser reloads
-    localStorage.setItem('userData', JSON.stringify(user));
-  }
-  // Error handling method, will need to make this specific to our backend
-  private handleError(errorRes: HttpErrorResponse){
-    let errorMessage = 'An unknown error occurred.';
-    if (errorRes.error) {
-      errorMessage = errorRes.error;
-    }
-    return throwError(errorMessage);
-  }
->>>>>>> AddProductToDashboardTwo
 }
