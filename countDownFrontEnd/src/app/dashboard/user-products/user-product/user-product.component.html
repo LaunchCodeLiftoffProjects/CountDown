@@ -2,13 +2,13 @@
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
    <input type="hidden" name="Id" [value]="service.formData.Id">
     <div class="form-group"> 
-    <input name="Title" #Title="ngModel" [(ngModel)] = "service.Title" class="form-control" placeholder="Product's Title">
+    <input name="Title" #Title="ngModel" [(ngModel)] = "service.formData.Title" class="form-control" placeholder="Product's Title">
     </div>
     <div class="form-group"> 
-    <input name="ReleaseDate" #ReleaseDate="ngModel" [(ngModel)] = "service.ReleaseDate" class="form-control" placeholder="Release Date">
+    <input name="ReleaseDate" #ReleaseDate="ngModel" [(ngModel)] = "service.formData.ReleaseDate" class="form-control" placeholder="Release Date">
     </div>
     <div class="form-group"> 
-    <input name="ImgLink" #ImgLink="ngModel" [(ngModel)] = "service.ImgLink" class="form-control" placeholder="full link to an image">
+    <input name="ImgLink" #ImgLink="ngModel" [(ngModel)] = "service.formData.ImgLink" class="form-control" placeholder="full link to an image">
     </div>
     <div class="form-group"> 
     <button type="submit">Submit</button>
