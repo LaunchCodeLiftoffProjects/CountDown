@@ -36,19 +36,38 @@ namespace Countdown_ASP.NET.Controllers
         [SwaggerOperation(OperationId = "RegisterProduct", Summary = "Create a new Product")]
         [SwaggerResponse(201, "Returns new data", Type = typeof(Product))]
         [SwaggerResponse(400, "Invalid or missing data", Type = null)]
-        public ActionResult RegisterProduct([FromBody] NewProductDto NewProductDto)
+        //public ActionResult RegisterProduct([FromBody] NewProductDto NewProductDto)
+
+        //public async Task<ActionResult<Product>> RegisterProduct([FromBody] NewProductDto NewProductDto)
+        //{
+        //    var productEntry = _dbContext.Products.Add(new Product());
+        //    productEntry.CurrentValues.SetValues(NewProductDto);
+        //    //_dbContext.SaveChanges();
+        //    await _dbContext.SaveChangesAsync();
+
+        //    var newProduct = productEntry.Entity;
+
+        //    return CreatedAtAction(
+        //      nameof(GetProduct),
+        //      new { entityId = newProduct.Id },
+        //      newProduct
+        //    );
+        //}
+
+        public async Task<ActionResult<NewProductDto>> RegisterProduct([FromBody] NewProductDto NewProductDto)
         {
+            //if (await UserExist(NewUserDto.Name)) return BadRequest("Username is taken");
             var productEntry = _dbContext.Products.Add(new Product());
             productEntry.CurrentValues.SetValues(NewProductDto);
-            _dbContext.SaveChanges();
-
+            await _dbContext.SaveChangesAsync();
             var newProduct = productEntry.Entity;
+            return new NewProductDto
+            {
+                Title = newProduct.Title,
+                ReleaseDate = newProduct.ReleaseDate,
+                ImgLink = newProduct.ImgLink
 
-            return CreatedAtAction(
-              nameof(GetProduct),
-              new { entityId = newProduct.Id },
-              newProduct
-            );
+            };
         }
 
         [HttpGet]
