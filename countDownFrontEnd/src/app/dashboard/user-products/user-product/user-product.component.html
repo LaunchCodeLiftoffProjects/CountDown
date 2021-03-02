@@ -1,16 +1,89 @@
-<p>This is where the user custom-product form will go</p>
-<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-   <input type="hidden" name="Id" [value]="service.formData.Id">
-    <div class="form-group"> 
-    <input name="Title" #Title="ngModel" [(ngModel)] = "service.formData.Title" class="form-control" placeholder="Product's Title">
+<div class="container">
+    <div class="row">
+      <div class="">
+        <div *ngIf="isLoading" style="text-align: center; margin-top: 8rem;">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+        <div class="add form"  *ngIf="!isLoading">
+          <div class="mb-3">
+            <div class="col-md-12 text-center">
+              <h1>Create New Event</h1>
+            </div>
+          </div>
+          <div class="alert alert-danger" *ngIf="error">
+            <p>{{ error }}</p>
+          </div>
+          <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Movie</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">Book</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline3" name="customRadioInline" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline3">Music</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline4" name="customRadioInline" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline4">Event</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline5" name="customRadioInline" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline5">Game</label>
+              </div>
+
+            <div class="form-group">
+                <br>
+              <label for="">Event Name</label>
+              <input
+                type=""
+                id=""
+                class="form-control"
+                placeholder="Enter your event's name"
+                ngModel
+                name=""
+                required
+              >
+            </div>
+
+            <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Author</label>
+                  <input type="" class="form-control" id="exampleFormControlInput1" placeholder="Author's Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Date</label>
+                    <input type="date" class="form-control">
+                  </div>
+
+                
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Event Description and Notes</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+              </form>
+  
+
+            <br>
+              <div class="form-group">
+                <p class="text-center">By adding your event you accept our <a href="/tos" >Terms Of Use</a></p>
+              </div>
+              <div class="col-md-12 text-center ">
+                <button
+                  class="btn btn-block mybtn btn-primary"
+                  type="submit"
+                  >
+                  Add / Update event</button>
+
+              </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="form-group"> 
-    <input name="ReleaseDate" #ReleaseDate="ngModel" [(ngModel)] = "service.formData.ReleaseDate" class="form-control" placeholder="Release Date">
-    </div>
-    <div class="form-group"> 
-    <input name="ImgLink" #ImgLink="ngModel" [(ngModel)] = "service.formData.ImgLink" class="form-control" placeholder="full link to an image">
-    </div>
-    <div class="form-group"> 
-    <button type="submit">Submit</button>
-    </div>
-</form>
+  </div>
+  
