@@ -21,7 +21,6 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let subjArr = ['ARCHITECTURE', 'ART', 'BIBLES', 'COMPUTERS', 'COOKING', 'DESIGN', 'DRAMA', 'EDUCATION', 'FICTION', 'FOREIGN', 'GARDENING', 'HISTORY', 'HUMOR', 'LAW', 'MATHEMATICS', 'MEDICAL', 'MUSIC', 'NATURE', 'PETS', 'PHILOSOPHY', 'PHOTOGRAPHY', 'POETRY', 'PSYCHOLOGY', 'REFERENCE', 'RELIGION', 'SCIENCE', 'TRANSPORTATION', 'TRAVEL']
     let tempArr = [];
     let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
     let dt2 : Date = new Date();

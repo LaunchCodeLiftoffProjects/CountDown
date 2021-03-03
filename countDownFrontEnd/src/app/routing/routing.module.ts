@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule} from '@angular/router';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { UserProductListComponent } from '../dashboard/user-products/user-product-list/user-product-list.component';
 import { MoviesComponent } from '../movies/movies.component';
 import { BooksComponent } from '../books/books.component';
 import { MusicComponent } from '../music/music.component';
@@ -50,6 +51,11 @@ const routes: Routes = [
     path: 'authentication',
     component: AuthComponent
   },
+  {
+    path: 'ProductList',
+    component: UserProductListComponent
+  },
+
   {
     path: 'tos',
     component: TosComponent

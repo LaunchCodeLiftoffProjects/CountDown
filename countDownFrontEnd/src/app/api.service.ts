@@ -7,6 +7,11 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
+
+  public get_countdown_products(){
+    return this.httpClient.get('https://localhost:44313/api/products'); //tried to bring in local api data this way (on user-product-list.component.html)
+  }
+  
   public get_movies(){
     return this.httpClient.get('https://api.themoviedb.org/3/movie/upcoming?api_key=192a848438f44d753a42f1fb58899015&language=en-US&page=1');
   }
