@@ -2090,11 +2090,12 @@
       ]
     },
     "System.Dynamic.Runtime/4.0.11": {
-      "sha512": "gmRQPMWWxgtCY7agBTGFvAdow8oFxsAV1xQzz3obHtQ7Bnl1UFXTKwDv3WxJskFhfmY58HsnoQhOF941WZP6YQ==",
+      "sha512": "db34f6LHYM0U0JpE+sOmjar27BnqTVkbLJhgfwMpTdgTigG/Hna3m2MYVwnFzGGKnEJk2UXFuoVTr8WUbU91/A==",
       "type": "package",
       "path": "system.dynamic.runtime/4.0.11",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -3628,23 +3629,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mrm\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\elber\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mrm\\Desktop\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
+      "projectUniqueName": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\grp_repo\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
       "projectName": "Countdown_ASP.NET",
-      "projectPath": "C:\\Users\\mrm\\Desktop\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
-      "packagesPath": "C:\\Users\\mrm\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mrm\\Desktop\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\obj\\",
+      "projectPath": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\grp_repo\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
+      "packagesPath": "C:\\Users\\elber\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\grp_repo\\countDownBackEnd\\Countdown ASP.NET\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\mrm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\elber\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3721,7 +3718,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

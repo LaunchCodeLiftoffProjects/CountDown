@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import * as moment from 'moment'; // allows use of the "moment()" function in Typescript; required running "npm install --save moment" - https://stackoverflow.com/questions/35166168/how-to-use-moment-js-library-in-angular-2-typescript-app
-
+import { NgForm } from '@angular/forms';
+import { UserProductService } from '../dashboard/shared/user-product.service';
 
 export { moment }
 
@@ -15,7 +16,7 @@ export class BooksComponent implements OnInit {
   tempItemList; //used to place product result objects in via iteration (to take them out of their arrays so that they'll be in one single array of book objects to iterater over vs an array of separate book category arrays)
   //baseIMGUrl = "https://image.tmdb.org/t/p/w500"; base URL for where the API stores the images, used in HTML file
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private service:UserProductService) { }
 
   ngOnInit(): void {
 
@@ -45,6 +46,14 @@ export class BooksComponent implements OnInit {
     //   this.books = data['items'];
     //   //for loop used to visualize data on the console
     // });
+  }
+
+  onSubmit(form:NgForm) {
+    this.service.postUserProductDetail(form.value).subscribe(
+      err => {
+        console.log(err);
+      }
+    )
   }
   
   dateToIsoFormat(releaseDate: string) : Date {

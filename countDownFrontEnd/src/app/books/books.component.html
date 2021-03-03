@@ -27,9 +27,19 @@
         <!-- </div> -->
         <!-- CARD BUTTONS AT BOTTOM  -->
         <div class="card-buttons">
-            <button type="button" class="btn share-icon"><i class="fa fa-share"></i></button>
-            <button type="button" class="btn info-icon"><i class="fa fa-info-circle"></i></button>
-            <button type="button" class="btn add-icon"><i class="fa fa-plus"></i></button>
+            <!-- <button type="button" class="btn share-icon"><i class="fa fa-share"></i></button>
+            <button type="button" class="btn info-icon"><i class="fa fa-info-circle"></i></button> -->
+            <!-- <button type="button" class="btn add-icon"><i class="fa fa-plus">Add</i></button> -->
+
+            <form #form="ngForm" (submit)="onSubmit(form)">
+                <!-- <input type="hidden" name="Id" [value]="service.formData.Id"> -->
+                <input type="hidden"name="Title" #Title="ngModel" [(ngModel)] = "book.volumeInfo.title" class="form-control" placeholder="Product's Title">
+                <input type="hidden" name="ReleaseDate" #ReleaseDate="ngModel" [(ngModel)] = "book.volumeInfo.publishedDate" class="form-control" placeholder="Release Date">
+                <input type="hidden" name="ImgLink" #ImgLink="ngModel" [(ngModel)] = "book.volumeInfo.imageLinks.thumbnail" class="form-control" placeholder="full link to an image">
+                <button type="submit" class="btn add-icon"><i>Add</i></button>
+                <!-- <button type="button" class="btn add-icon" click=onSubmit(form)><i class="fa fa-plus">Add2</i></button> -->
+             </form>
+            
         </div>
       </div>
     </div>

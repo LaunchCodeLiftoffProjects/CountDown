@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+// import { ApiService } from '../api.service';
 
 
 @Component({
@@ -9,7 +9,9 @@ import { ApiService } from '../api.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  // constructor(private apiService: ApiService) { }
+
+  constructor() { }
 
   ngOnInit() {
   }
