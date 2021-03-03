@@ -27,10 +27,17 @@
         </div>
         <!-- CARD BUTTONS AT BOTTOM  -->
         <div class="card-buttons">
-            <!-- <button type="button" class="btn share-icon"><i class="fa fa-share" ></i></button>
+            <!-- <button type="button" class="btn share-icon"><i class="fa fa-share"></i></button>
             <button type="button" class="btn info-icon"><i class="fa fa-info-circle"></i></button> -->
-            <button type="button" class="btn add-icon"><i class="fa fa-plus">Add</i></button>
-            <!-- <button type="button" class="btn add-icon"><i class="fa fa-plus" ng-click="PostData()></i></button> -->
+            <!-- <button type="button" class="btn add-icon"><i class="fa fa-plus">Add</i></button> -->
+
+            <form #form="ngForm" (submit)="onSubmit(form)">
+                <!-- <input type="hidden" name="Id" [value]="service.formData.Id"> -->
+                <input type="hidden"name="Title" #Title="ngModel" [(ngModel)] = "movie.title" class="form-control" placeholder="Product's Title">
+                <input type="hidden" name="ReleaseDate" #ReleaseDate="ngModel" [(ngModel)] = "movie.release_date" class="form-control" placeholder="Release Date">
+                <input type="hidden" name="ImgLink" #ImgLink="ngModel" [(ngModel)] = "movie.poster_path" class="form-control" placeholder="full link to an image">
+                <button type="submit" class="btn add-icon"><i>Add</i></button>
+             </form>
         </div>
       </div>
     </div>
