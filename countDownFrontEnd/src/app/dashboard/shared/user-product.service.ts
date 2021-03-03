@@ -17,7 +17,7 @@ export class UserProductService {
     this._formData = value;
   }
 
-  readonly rootUrl = "https://localhost:44345/api";
+  readonly rootUrl = "https://localhost:44313/api";
 
   constructor(private http:HttpClient) { }
 
