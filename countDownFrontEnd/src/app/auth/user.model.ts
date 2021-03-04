@@ -4,6 +4,7 @@ export class User {
   constructor(
     public name: string,
     private _token: string,
+    public id: number,
   ) {}
 
   // allows app to get the token and check its validity
