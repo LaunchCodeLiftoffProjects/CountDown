@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import * as moment from 'moment'; // allows use of the "moment()" function in Typescript; required running "npm install --save moment" - https://stackoverflow.com/questions/35166168/how-to-use-moment-js-library-in-angular-2-typescript-app
 import { NgForm } from '@angular/forms';
 import { UserProductService } from '../dashboard/shared/user-product.service';
+import { User } from '../auth/user.model';
 
 export { moment }
 
@@ -16,6 +17,7 @@ export class MoviesComponent implements OnInit {
   movies; //array of movie objects
   //baseIMGUrl = "https://image.tmdb.org/t/p/w500"; base URL for where the API stores the images, used in HTML file
   tempItemList;
+  currentUser = User;
 
   constructor(private apiService: ApiService, private service:UserProductService) { }
 

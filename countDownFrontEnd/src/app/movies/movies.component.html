@@ -32,7 +32,7 @@
             <!-- <button type="button" class="btn add-icon"><i class="fa fa-plus">Add</i></button> -->
 
             <form #form="ngForm" (submit)="onSubmit(form)">
-                <!-- <input type="hidden" name="Id" [value]="service.formData.Id"> -->
+                <input type="hidden" name="Id" [value]="currentUser.id"> 
                 <input type="hidden"name="Title" #Title="ngModel" [(ngModel)] = "movie.title" class="form-control" placeholder="Product's Title">
                 <input type="hidden" name="ReleaseDate" #ReleaseDate="ngModel" [(ngModel)] = "movie.release_date" class="form-control" placeholder="Release Date">
                 <input type="hidden" name="ImgLink" #ImgLink="ngModel" [(ngModel)] = "movie.poster_path" class="form-control" placeholder="full link to an image">
