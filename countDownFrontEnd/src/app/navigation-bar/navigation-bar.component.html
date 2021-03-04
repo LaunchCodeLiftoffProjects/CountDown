@@ -2,7 +2,8 @@
     <a class="navbar-brand disabled" >Countdown</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav">
-        <li routerLinkActive="active current"><a class="nav-item nav-link" routerLink="/dashboard">Dashboard</a></li>
+        <!-- if the user is authenticated, this link will be visible/available -->
+        <li routerLinkActive="active current" *ngIf="isAuthenticated"><a class="nav-item nav-link" routerLink="/dashboard">Dashboard</a></li>
         <li routerLinkActive="active current"><a class="nav-item nav-link" routerLink="/movies">Movies</a></li>
         <li routerLinkActive="active current"><a class="nav-item nav-link" routerLink="/books">Books</a></li>
         <li routerLinkActive="active current"><a class="nav-item nav-link" routerLink="/music">Music</a></li>
