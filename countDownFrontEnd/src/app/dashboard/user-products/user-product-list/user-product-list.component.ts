@@ -27,9 +27,14 @@ export class UserProductListComponent implements OnInit {
 
     //method3 - tried to bring in local api data this way (from api module)
     this.apiService.get_countdown_products().subscribe((data)=>{
-      
       this.list = data;
     });
+
+    // ORIGINAL CODE, BELOW =========================================
+    // this.apiService.get_movies().subscribe((data)=>{
+    //   this.movies = data['results'];
+    //   //for loop used to visualize data on the console
+    // });
 
 
     
