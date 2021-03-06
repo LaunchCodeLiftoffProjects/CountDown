@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\grp_repo\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj": {}
+    "C:\\Users\\dante\\source\\liftoff\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\grp_repo\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj": {
+    "C:\\Users\\dante\\source\\liftoff\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\grp_repo\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
+        "projectUniqueName": "C:\\Users\\dante\\source\\liftoff\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
         "projectName": "Countdown_ASP.NET",
-        "projectPath": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\grp_repo\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
-        "packagesPath": "C:\\Users\\elber\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elber\\Desktop\\LC101\\lift-off\\grp_repo\\countDownBackEnd\\Countdown ASP.NET\\obj\\",
+        "projectPath": "C:\\Users\\dante\\source\\liftoff\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\Countdown_ASP.NET.csproj",
+        "packagesPath": "C:\\Users\\dante\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dante\\source\\liftoff\\CountDown\\countDownBackEnd\\Countdown ASP.NET\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\elber\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dante\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,10 +38,15 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[3.1.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.11, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -91,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
