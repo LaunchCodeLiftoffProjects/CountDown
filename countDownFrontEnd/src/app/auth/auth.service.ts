@@ -171,7 +171,7 @@ export class AuthService {
 
 
     return this.http.post<AuthResponseData>(
-      'https://localhost:44313/api/users/register',
+      'https://localhost:5001/api/users/register',
       {
         name: name,
         email: email,
@@ -193,7 +193,7 @@ export class AuthService {
   }
   login(email: string, password: string){
     return this.http.post<AuthResponseData>(
-      'https://localhost:44313/api/users/login',
+      'https://localhost:5001/api/users/login',
       {
         email: email,
         password: password,
@@ -213,6 +213,31 @@ export class AuthService {
     );
   }
 
+   autoLogin() {
+    const userData: {
+      name: string;
+      _token: string;
+      id: number;
+    } = JSON.parse(localStorage.getItem('userData'));
+    console.log('tried to log in')
+    console.log(userData)
+
+    if (!userData){
+      return;
+    }
+      const loadedUser = new User(
+      userData.name,
+      userData._token,
+      userData.id
+
+      // new Date(userData._tokenExpirationDate)
+      );
+        console.log(loadedUser)
+      if (loadedUser.token){
+        this.user.next(loadedUser);
+      }
+  }
+
   logout() {
     this.user.next(null);
     this.router.navigate(['/authentication']);
@@ -227,6 +252,7 @@ export class AuthService {
     // allows you to write an item to local storage, in this case, our user object so our login
     // survives browser reloads
     localStorage.setItem('userData', JSON.stringify(user));
+    console.log(user.token)
   }
 
   // Error handling method, will need to make this specific to our backend
