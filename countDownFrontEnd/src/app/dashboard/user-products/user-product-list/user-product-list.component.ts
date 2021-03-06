@@ -6,33 +6,45 @@ import { ApiService } from 'src/app/api.service';
 @Component({
   selector: 'app-user-product-list',
   templateUrl: './user-product-list.component.html',
-  styles: []
+  styleUrls: ['./user-product-list.component.css']
 })
 export class UserProductListComponent implements OnInit {
-
+  tempItemList;
   list;
-  
+
   // constructor(private service:UserProductService) { } //method1 - tried using youtube tutorial
 
   constructor(private apiService: ApiService, private service:UserProductService) { } //method3 - tried to bring in local api data this way (from api module)
 
-
-
-  ngOnInit() {  
-
+  ngOnInit() {
     let tempArr = [];
+    let tempItemList = [];
+    let dt2 : Date = new Date();
 
+      this.apiService.get_countdown_products().subscribe((data)=>{
+        tempArr = Object.entries(data).map(e => e[1])
+
+        for (let i = 0; i < tempArr.length; i++) {
+            let originalDate = moment(tempArr[i].releaseDate, "YYYY-MM-DD");
+            let isoDate = originalDate.format();
+            let dt1 : Date = new Date (isoDate);
+            if (dt1.getTime() - dt2.getTime() > 0 && tempArr[i].imgLink != null) {
+              this.tempItemList = tempItemList.push(tempArr[i]);
+              console.log('fart');
+              console.log(this.tempItemList[i]);
+            }
+            console.log(tempArr[i]);
+        }
+      });
+
+  this.list = tempArr;
     // this.service.refreshList(); //method1 - tried using youtube tutorial
-
 
     //method3 - tried to bring in local api data this way (from api module)
     this.apiService.get_countdown_products().subscribe((data)=>{
-      
+
       this.list = data;
     });
-
-
-    
   }
 
   dateToIsoFormat(releaseDate: string) : Date {
@@ -80,20 +92,20 @@ export class UserProductListComponent implements OnInit {
 
    hoursInMilisec (releaseDate: string) : number {
     let numOfFullHours : number = this.hoursUntilRelease(releaseDate);
-    let hoursInMiliseconds : number = (numOfFullHours * 1000) * (60 * 60); 
+    let hoursInMiliseconds : number = (numOfFullHours * 1000) * (60 * 60);
     return hoursInMiliseconds;
    }
 
    minsUntilRelease (releaseDate: string) : number {
     let timeInMiliseconds : number = this.diffInTime(releaseDate);
     let daysInMiliseconds : number = this.daysInMilisec(releaseDate);
-    let hoursInMiliseconds : number = this.hoursInMilisec(releaseDate); 
+    let hoursInMiliseconds : number = this.hoursInMilisec(releaseDate);
     let diff_In_Mins : number = (((timeInMiliseconds - daysInMiliseconds) - hoursInMiliseconds)/ 1000) / 60;
     if (timeInMiliseconds >= 0) {
       return Math.floor(diff_In_Mins);
     } else {
       return Math.ceil(diff_In_Mins);
-    } 
+    }
    }
 
    minsInMilisec (releaseDate: string) : number {
@@ -109,10 +121,10 @@ export class UserProductListComponent implements OnInit {
     let minsInMiliseconds : number = this.minsInMilisec(releaseDate);
     let diff_In_Sec : number = ((timeInMiliseconds - daysInMiliseconds - hoursInMiliseconds - minsInMiliseconds)/ 1000);
     if (timeInMiliseconds >= 0) { // this "if" statement doesn't impact anything, at this point, but am doing this in case we ever want to display miliseconds
-      return Math.floor(diff_In_Sec); 
+      return Math.floor(diff_In_Sec);
     } else {
       return Math.ceil(diff_In_Sec);
-    }  
+    }
    }
 
 
