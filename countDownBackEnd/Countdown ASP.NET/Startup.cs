@@ -64,6 +64,9 @@ namespace Countdown_ASP.NET
             services.AddDbContext<ProductDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddDbContext<ProductDbContext>(o => o.UseSqlite("Data Source=sqlite.db;"));
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
 
             services.AddSwaggerGen(
               options => {
