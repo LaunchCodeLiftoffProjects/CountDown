@@ -49,7 +49,8 @@ namespace Countdown_ASP.NET.Controllers
             return new UserDTO
             {
                 Name = newUser.Name,
-                Token = _tokenService.CreateToken(newUser)
+                Token = _tokenService.CreateToken(newUser),
+                Id = newUser.Id
             };
         }
 
@@ -69,7 +70,8 @@ namespace Countdown_ASP.NET.Controllers
             return new UserDTO
             {
                 Name = user.Name,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                Id = user.Id
             };
         }
 
