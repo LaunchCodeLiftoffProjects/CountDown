@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserProductService } from '../../shared/user-product.service';
 import * as moment from 'moment'; // allows use of the "moment()" function in Typescript; required running "npm install --save moment" - https://stackoverflow.com/questions/35166168/how-to-use-moment-js-library-in-angular-2-typescript-app
 import { ApiService } from 'src/app/api.service';
+import { HttpClient } from '@angular/common/http';
+
+import { AuthResponseData, AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-user-product-list',
@@ -14,38 +17,18 @@ export class UserProductListComponent implements OnInit {
 
   // constructor(private service:UserProductService) { } //method1 - tried using youtube tutorial
 
-  constructor(private apiService: ApiService, private service:UserProductService) { } //method3 - tried to bring in local api data this way (from api module)
+  constructor(private authService: AuthService,private apiService: ApiService, private service:UserProductService,private httpClient: HttpClient) { } //method3 - tried to bring in local api data this way (from api module)
 
   ngOnInit() {
-    let tempArr = [];
-    let tempItemList = [];
-    let dt2 : Date = new Date();
 
-      this.apiService.get_countdown_products().subscribe((data)=>{
-        tempArr = Object.entries(data).map(e => e[1])
-
-        for (let i = 0; i < tempArr.length; i++) {
-            let originalDate = moment(tempArr[i].releaseDate, "YYYY-MM-DD");
-            let isoDate = originalDate.format();
-            let dt1 : Date = new Date (isoDate);
-            if (dt1.getTime() - dt2.getTime() > 0 && tempArr[i].imgLink != null) {
-              this.tempItemList = tempItemList.push(tempArr[i]);
-              console.log('fart');
-              console.log(this.tempItemList[i]);
-            }
-            console.log(tempArr[i]);
-        }
-      });
-
-  this.list = tempArr;
-    // this.service.refreshList(); //method1 - tried using youtube tutorial
-
-    //method3 - tried to bring in local api data this way (from api module)
     this.apiService.get_countdown_products().subscribe((data)=>{
-
+      console.log(data);
       this.list = data;
     });
+
+    
   }
+  
 
   dateToIsoFormat(releaseDate: string) : Date {
     // how to change string date to ISO format - https://stackoverflow.com/questions/35959853/convert-string-to-isodate

@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthResponseData,AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  
+  
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   public get_countdown_products(){
-    return this.httpClient.get('https://localhost:44313/api/products'); //tried to bring in local api data this way (on user-product-list.component.html)
+    var userId = this.authService.user.value.id;
+    return this.httpClient.get('https://localhost:44313/api/products/user/'+userId); //tried to bring in local api data this way (on user-product-list.component.html)
   }
   
   public get_movies(){
