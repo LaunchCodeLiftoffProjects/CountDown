@@ -30,7 +30,7 @@ namespace Countdown_ASP.NET.Controllers
             Description = "Publicly available"
    )]
         [SwaggerResponse(200, "List of public product data", Type = typeof(List<Product>))]
-        public ActionResult GetResources() => Ok(_dbContext.Products.ToList());
+        public ActionResult GetResources() => Ok(_dbContext.Products.Include(u => u.User).ToList());
 
         [HttpPost]
         [SwaggerOperation(OperationId = "RegisterProduct", Summary = "Create a new Product")]
@@ -57,6 +57,7 @@ namespace Countdown_ASP.NET.Controllers
         public async Task<ActionResult<NewProductDto>> RegisterProduct([FromBody] NewProductDto NewProductDto)
         {
             //if (await UserExist(NewUserDto.Name)) return BadRequest("Username is taken");
+            User user = _dbContext.Users.Single(u => u.Id == NewProductDto.UserID);
             var productEntry = _dbContext.Products.Add(new Product());
             productEntry.CurrentValues.SetValues(NewProductDto);
             await _dbContext.SaveChangesAsync();
@@ -65,7 +66,8 @@ namespace Countdown_ASP.NET.Controllers
             {
                 Title = newProduct.Title,
                 ReleaseDate = newProduct.ReleaseDate,
-                ImgLink = newProduct.ImgLink
+                ImgLink = newProduct.ImgLink,
+                UserID = user.Id
 
             };
         }
@@ -81,6 +83,25 @@ namespace Countdown_ASP.NET.Controllers
             if (product == null) return NotFound();
 
             return Ok(product);
+        }
+
+
+
+        [HttpGet]
+        [Route("user/{UserId}")]
+        [SwaggerOperation(OperationId = "GetUserProducts", Summary = "Retrieve Product data for specified user")]
+        [SwaggerResponse(200, "Retrieved products", Type = typeof(Product))]
+        [SwaggerResponse(404, "Products not found", Type = null)]
+        public ActionResult GetUserProducts([FromRoute] int UserId)
+        {
+            if(UserId == 0)
+            {
+                return NotFound();
+            }
+            User theUser = _dbContext.Users
+                   .Include(u => u.products)
+                   .Single(u => u.Id == UserId);
+            return Ok(theUser.products);
         }
 
         [HttpDelete]
