@@ -241,6 +241,7 @@ export class AuthService {
   logout() {
     this.user.next(null);
     this.router.navigate(['/authentication']);
+    localStorage.removeItem('userData');
   }
 
   private handleAuthentication(name: string, token: string, id: number)  {

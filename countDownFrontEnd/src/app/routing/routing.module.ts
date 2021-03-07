@@ -12,11 +12,12 @@ import { SettingsComponent } from '../settings/settings.component';
 import { AuthComponent } from '../auth/auth.component';
 import { TosComponent } from '../tos/tos.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
-
+import { AuthGuard } from '../auth/auth.guard';
 const routes: Routes = [
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',

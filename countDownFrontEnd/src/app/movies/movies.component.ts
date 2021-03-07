@@ -4,6 +4,9 @@ import * as moment from 'moment'; // allows use of the "moment()" function in Ty
 import { NgForm } from '@angular/forms';
 import { UserProductService } from '../dashboard/shared/user-product.service';
 import { User } from '../auth/user.model';
+import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
+
 
 export { moment }
 
@@ -13,15 +16,20 @@ export { moment }
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-
+  isAuthenticated = false;
+  private userSub: Subscription;
   movies; //array of movie objects
   //baseIMGUrl = "https://image.tmdb.org/t/p/w500"; base URL for where the API stores the images, used in HTML file
   tempItemList;
   currentUser = User;
 
-  constructor(private apiService: ApiService, private service:UserProductService) { }
+  constructor(private authService: AuthService, private apiService: ApiService, private service:UserProductService) { }
 
   ngOnInit(): void {
+
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !user ? false : true;
+    });
 
     let tempArr = [];
     let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...
@@ -102,20 +110,20 @@ export class MoviesComponent implements OnInit {
 
    hoursInMilisec (releaseDate: string) : number {
     let numOfFullHours : number = this.hoursUntilRelease(releaseDate);
-    let hoursInMiliseconds : number = (numOfFullHours * 1000) * (60 * 60); 
+    let hoursInMiliseconds : number = (numOfFullHours * 1000) * (60 * 60);
     return hoursInMiliseconds;
    }
 
    minsUntilRelease (releaseDate: string) : number {
     let timeInMiliseconds : number = this.diffInTime(releaseDate);
     let daysInMiliseconds : number = this.daysInMilisec(releaseDate);
-    let hoursInMiliseconds : number = this.hoursInMilisec(releaseDate); 
+    let hoursInMiliseconds : number = this.hoursInMilisec(releaseDate);
     let diff_In_Mins : number = (((timeInMiliseconds - daysInMiliseconds) - hoursInMiliseconds)/ 1000) / 60;
     if (timeInMiliseconds >= 0) {
       return Math.floor(diff_In_Mins);
     } else {
       return Math.ceil(diff_In_Mins);
-    } 
+    }
    }
 
    minsInMilisec (releaseDate: string) : number {
@@ -131,9 +139,9 @@ export class MoviesComponent implements OnInit {
     let minsInMiliseconds : number = this.minsInMilisec(releaseDate);
     let diff_In_Sec : number = ((timeInMiliseconds - daysInMiliseconds - hoursInMiliseconds - minsInMiliseconds)/ 1000);
     if (timeInMiliseconds >= 0) { // this "if" statement doesn't impact anything, at this point, but am doing this in case we ever want to display miliseconds
-      return Math.floor(diff_In_Sec); 
+      return Math.floor(diff_In_Sec);
     } else {
       return Math.ceil(diff_In_Sec);
-    }  
+    }
    }
 }
