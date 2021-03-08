@@ -12,8 +12,8 @@ export class ApiService {
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   public get_countdown_products(){
-    var userId = this.authService.user.value.id;
-    return this.httpClient.get('https://localhost:44313/api/products/user/'+userId); //tried to bring in local api data this way (on user-product-list.component.html)
+    //var userId = this.authService.user.value.id;
+    return this.httpClient.get('https://localhost:44313/api/products/');///users/+userId); //tried to bring in local api data this way (on user-product-list.component.html)
   }
   
   public get_movies(){
