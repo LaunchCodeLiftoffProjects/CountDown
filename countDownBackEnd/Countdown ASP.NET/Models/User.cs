@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
@@ -22,7 +22,7 @@ namespace Countdown_ASP.NET.Models
         public string Email { get; set; }
         public string Password { get; set; }
         //want to be able to reference products that belong to a particular user
-        public IList<Product> products { get; set; }
+        //public IList<Product> products { get; set; }
 
         /*
         public User(string name, string email, string password)
@@ -68,5 +68,5 @@ public class UserDTO
 {
     public string Name { get; set; }
     public string Token { get; set; }
-    public int Id { get; set; }
+    //public int Id { get; set; }
 }
