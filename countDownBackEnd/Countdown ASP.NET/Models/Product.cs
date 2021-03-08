@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
@@ -9,16 +9,40 @@ namespace Countdown_ASP.NET.Models
 {
     public class Product : UniqueEntity
     {
-        
+
+        //public ProductType Type { get; set; }
+
+        //public int TypeId { get; set; }
+
+        //public List<ProductCategory> Categories { get; set; }
+
         public string Title { get; set; }
         public string ImgLink { get; set; }
 
+        //public User User { get; set; } // artist who has the right to sell and promote the work under their own name or on behalf of a single team/band
 
-        public User User { get; set; }
-        public int UserId { get; set; }
+        //public int UserId { get; set; }
+
+        //public ProductSingleVendor Vendor { get; set; } // artist who has the right to sell and promote the work under their own name or on behalf of a single team/band
+
+        //public int VendorId { get; set; }
+
+        //public ProductMultiVendor MultiVendor { get; set; } // production company, publishing house, record company, who has right to sell products under *several* vendor names
+
+        //public int MultiVendorId { get; set; }
+
+        //public string Description { get; set; }
 
         public DateTime ReleaseDate { get; set; }
-        
+
+        //public bool Verified { get; set; } // is the userId connected to someone who has the same Single Vendor Id (or Multi-Vendor Id, if one is present) as what's connected to this product? So, a user or 
+        // vendor can CRUD their own events, but the events won't be "verified" unless their Vendor or multi-vendor ide matches either the single or multi-vendor Id associated with the produdt.
+
+
+        // public List<Contributor> Contributors { get; set; } // cast of actors/directors, illustrator, featured music artist, etc -- offer a dropdown list of users to add, but set as a new table of Ids to cover instances where a Vendor adds names of ppl who are not users of the software
+
+        // public List<Outlet> Outlets { get; set; } // where product will be able to be found once released
+
 
 
     }
@@ -54,9 +78,8 @@ namespace Countdown_ASP.NET.Models
         [Required]
         public DateTime ReleaseDate { get; set; }
 
-        //send to the backend when available
-        public int UserID { get; set; }
-        public User user { get; set; }
+        
+        //public int UserID { get; set; }
 
         //[NotNull]
         //[Required]
