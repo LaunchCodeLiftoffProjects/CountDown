@@ -50,7 +50,7 @@ namespace Countdown_ASP.NET.Controllers
             {
                 Name = newUser.Name,
                 Token = _tokenService.CreateToken(newUser),
-                Id = newUser.Id
+                //Id = newUser.Id
             };
         }
 
@@ -71,7 +71,7 @@ namespace Countdown_ASP.NET.Controllers
             {
                 Name = user.Name,
                 Token = _tokenService.CreateToken(user),
-                Id = user.Id
+                //Id = user.Id
             };
         }
 
