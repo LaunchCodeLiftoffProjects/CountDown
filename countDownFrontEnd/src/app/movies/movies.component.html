@@ -35,7 +35,7 @@
                 <!-- <input type="hidden" name="Id" [value]="service.formData.Id"> -->
                 <input type="hidden"name="Title" #Title="ngModel" [(ngModel)] = "movie.title" class="form-control" placeholder="Product's Title">
                 <input type="hidden" name="ReleaseDate" #ReleaseDate="ngModel" [(ngModel)] = "movie.release_date" class="form-control" placeholder="Release Date">
-                <input type="hidden" name="ImgLink" #ImgLink="ngModel" [(ngModel)] = "movie.poster_path" class="form-control" placeholder="full link to an image">
+                <input type="hidden" name="ImgLink" #ImgLink="ngModel" [(ngModel)] = '"https://image.tmdb.org/t/p/w500" + movie.poster_path' class="form-control" placeholder="full link to an image">
                 <button type="submit" class="btn add-icon"><i>Add</i></button>
              </form>
         </div>
@@ -43,28 +43,3 @@
     </div>
 
 <!--Probably could make this script code into a getCountdown function inside an load event-->
-
-
-
- <script>
-     let count = new Date("Nov 21, 2021 00:00:00").getTime();
-    let anothercount = new Date("June 5, 2021 00:00:00").getTime();
-    let x = setInterval(function(){
-        let now = new Date().getTime();
-        let d = count - now;
-
-        let day = Math.floor(d/(1000 * 60 * 60 * 24));
-        let hour = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minute = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-        let second = Math.floor((d % (1000 * 60)) / 1000);
-
-        document.getElementById('day').innerHTML = day;
-        document.getElementById('hour').innerHTML = hour;
-        document.getElementById('minute').innerHTML = minute;
-        document.getElementById('second').innerHTML = second;
-
-        if(d <= 0){
-            clearInterval(x);
-        }
-    }, 1000)
- </script>

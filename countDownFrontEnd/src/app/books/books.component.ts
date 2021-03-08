@@ -9,7 +9,7 @@ export { moment }
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['../app.component.css']
 })
 export class BooksComponent implements OnInit {
   books; //array of movie objects

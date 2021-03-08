@@ -9,7 +9,7 @@ export { moment }
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.css']
+  styleUrls: ['../app.component.css']
 })
 export class MoviesComponent implements OnInit {
 

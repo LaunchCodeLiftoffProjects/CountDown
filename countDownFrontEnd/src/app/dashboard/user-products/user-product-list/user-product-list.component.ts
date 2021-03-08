@@ -3,10 +3,12 @@ import { UserProductService } from '../../shared/user-product.service';
 import * as moment from 'moment'; // allows use of the "moment()" function in Typescript; required running "npm install --save moment" - https://stackoverflow.com/questions/35166168/how-to-use-moment-js-library-in-angular-2-typescript-app
 import { ApiService } from 'src/app/api.service';
 
+export { moment };
+
 @Component({
   selector: 'app-user-product-list',
   templateUrl: './user-product-list.component.html',
-  styles: []
+  styleUrls: ['./user-product-list.component.css']
 })
 export class UserProductListComponent implements OnInit {
 
@@ -20,7 +22,7 @@ export class UserProductListComponent implements OnInit {
 
   ngOnInit() {  
 
-    let tempArr = [];
+    // let tempArr = [];
 
     // this.service.refreshList(); //method1 - tried using youtube tutorial
 
