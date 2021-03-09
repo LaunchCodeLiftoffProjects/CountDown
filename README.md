@@ -1,5 +1,7 @@
 # CountDown!
 
+![Demonstration of CountDown App MVP](CountdownGif_20210308.gif)
+
 This app is designed to allow you to keep track of all the cool new things that are coming out.
 
 Instead of all this info being spread across websites and mailing lists and push notifications, we're proposing a central location for users to be able to find what they're looking for, and have a countdown for it as well! Since it'll be user based our customers will be able to not only save the items they find but the app can also suggest similar events that the user may be interested in and also share with friends and fellow fans! 
