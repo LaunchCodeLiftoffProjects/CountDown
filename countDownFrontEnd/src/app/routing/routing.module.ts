@@ -12,15 +12,17 @@ import { SettingsComponent } from '../settings/settings.component';
 import { AuthComponent } from '../auth/auth.component';
 import { TosComponent } from '../tos/tos.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/movies',
     pathMatch: 'full'
   },
   {
@@ -29,23 +31,28 @@ const routes: Routes = [
   },
   {
     path: 'books',
-    component: BooksComponent
+    component: BooksComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'music',
-    component: MusicComponent
+    component: MusicComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'events',
-    component: EventsComponent
+    component: EventsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'games',
-    component: GamesComponent
+    component: GamesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'settings',
-    component: SettingsComponent
+    component: SettingsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'authentication',

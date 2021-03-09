@@ -36,8 +36,9 @@
                 <input type="hidden"name="Title" #Title="ngModel" [(ngModel)] = "movie.title" class="form-control" placeholder="Product's Title">
                 <input type="hidden" name="ReleaseDate" #ReleaseDate="ngModel" [(ngModel)] = "movie.release_date" class="form-control" placeholder="Release Date">
                 <input type="hidden" name="ImgLink" #ImgLink="ngModel" [(ngModel)] = '"https://image.tmdb.org/t/p/w500" + movie.poster_path' class="form-control" placeholder="full link to an image">
-                <button type="submit" class="btn add-icon"><i>Add</i></button>
-             </form>
+                <!-- <button type="submit" class="btn add-icon"><i>Add</i></button> -->
+                <button *ngIf="isAuthenticated" type="submit" class="btn add-icon"><i>Add</i></button> 
+            </form>
         </div>
       </div>
     </div>

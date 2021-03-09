@@ -37,6 +37,22 @@ export class UserProductListComponent implements OnInit {
     
   }
 
+  onDelete(id) {
+    this.service.deleteUserProduct(id).subscribe(
+      res => {
+        // this.service.refreshList();
+        this.apiService.get_countdown_products().subscribe((data)=>{
+      
+          this.list = data;
+        });
+        
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
   dateToIsoFormat(releaseDate: string) : Date {
     // how to change string date to ISO format - https://stackoverflow.com/questions/35959853/convert-string-to-isodate
     let originalDate = moment(releaseDate, "YYYY-MM-DD");

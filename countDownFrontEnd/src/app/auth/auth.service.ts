@@ -160,6 +160,7 @@ import { User } from './user.model';
 export interface AuthResponseData {
   name: string;
   token: string;
+  id: number;
 }
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -185,6 +186,7 @@ export class AuthService {
         this.handleAuthentication(
           resData.name,
           resData.token,
+          resData.id,
         );
       })
     );
@@ -205,6 +207,7 @@ export class AuthService {
         this.handleAuthentication(
           resData.name,
           resData.token,
+          resData.id,
         );
       })
     );
@@ -215,7 +218,7 @@ export class AuthService {
     this.router.navigate(['/authentication']);
   }
 
-  private handleAuthentication(name: string, token: string)  {
+  private handleAuthentication(name: string, token: string, id: number)  {
 
     // creates new user with the info passed in from resData and the expirationDate we just caclulated
     const user = new User(name, token);
@@ -224,6 +227,7 @@ export class AuthService {
     // allows you to write an item to local storage, in this case, our user object so our login
     // survives browser reloads
     localStorage.setItem('userData', JSON.stringify(user));
+    console.log(user.token)
   }
 
   // Error handling method, will need to make this specific to our backend

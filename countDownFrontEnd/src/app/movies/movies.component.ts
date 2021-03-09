@@ -3,6 +3,9 @@ import { ApiService } from '../api.service';
 import * as moment from 'moment'; // allows use of the "moment()" function in Typescript; required running "npm install --save moment" - https://stackoverflow.com/questions/35166168/how-to-use-moment-js-library-in-angular-2-typescript-app
 import { NgForm } from '@angular/forms';
 import { UserProductService } from '../dashboard/shared/user-product.service';
+import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
+
 
 export { moment }
 
@@ -13,13 +16,20 @@ export { moment }
 })
 export class MoviesComponent implements OnInit {
 
+  isAuthenticated = false;
+  private userSub: Subscription;
   movies; //array of movie objects
   //baseIMGUrl = "https://image.tmdb.org/t/p/w500"; base URL for where the API stores the images, used in HTML file
   tempItemList;
 
-  constructor(private apiService: ApiService, private service:UserProductService) { }
+  // constructor(private apiService: ApiService, private service:UserProductService) { }
+  constructor(private authService: AuthService, private apiService: ApiService, private service:UserProductService) { }
 
   ngOnInit(): void {
+
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !user ? false : true;
+    });
 
     let tempArr = [];
     let tempItemList = []; //don't know why this works, but need this additional localized declaration of tempItemList...

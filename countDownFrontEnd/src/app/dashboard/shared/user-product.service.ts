@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product.model';
-import{ HttpClient} from "@angular/common/http"
+import{ HttpClient} from "@angular/common/http";
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Injectable({
@@ -18,17 +19,29 @@ export class UserProductService {
   }
 
   readonly rootUrl = "https://localhost:44313/api";
+  list : Product [];
 
   // list: Product[]; //method1 - tried using youtube tutorial for the attempt below: https://www.youtube.com/watch?v=fom80TujpYQ
 
   //list: any = []; // method2 - used this for the attempt below: https://www.djamware.com/post/5d8d7fc10daa6c77eed3b2f2/angular-8-tutorial-rest-api-and-httpclient-examples
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private route : ActivatedRoute, 
+    private router : Router) { }
 
   postUserProductDetail(formData: Product) {
-    return this.http.post(this.rootUrl + "/products", formData)
+    return this.http.post(this.rootUrl + "/products", formData);
   }
 
+  deleteUserProduct(id) {
+    return this.http.delete(this.rootUrl + "/products/" + id);
+  }
+
+  refreshList(){
+    // return this.router.navigateByUrl("/dashboard");
+    this.http.get(this.rootUrl + "/products")
+    .toPromise()
+    .then(res => this.list = res as Product []);
+  }
 
   //method1 - tried using youtube tutorial for the attempt below: https://www.youtube.com/watch?v=fom80TujpYQ
 
