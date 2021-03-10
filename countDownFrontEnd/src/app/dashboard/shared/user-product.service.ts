@@ -36,13 +36,6 @@ export class UserProductService {
     return this.http.delete(this.rootUrl + "/products/" + id);
   }
 
-  refreshList(){
-    // return this.router.navigateByUrl("/dashboard");
-    this.http.get(this.rootUrl + "/products")
-    .toPromise()
-    .then(res => this.list = res as Product []);
-  }
-
   //method1 - tried using youtube tutorial for the attempt below: https://www.youtube.com/watch?v=fom80TujpYQ
 
   // refreshList(){
